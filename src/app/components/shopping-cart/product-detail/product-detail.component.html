@@ -1,0 +1,101 @@
+  <!--breadcrumbs area start-->
+  <div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li>product details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+  <!--product details start-->
+  <div class="product_details mt-70 mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-tab">
+                    <div id="img-1" class="zoomWrapper single-zoom">
+                        <!-- <a href="#"> -->
+                            <img id="zoom1" [src]="inItems.item_primary_thumb" data-zoom-image="inItems.item_primary_thumb" alt="big-1">
+                       <!--  </a> -->
+                    </div>
+
+                    <div class="single-zoom-thumb">
+                      <div class="col-xs-1" style="margin-top: 200px; border: 1px solid black;">
+                        <app-product-images [items1]="inItems"></app-product-images>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product_d_right">
+                   <form action="#">
+                        <h1><strong>{{inItems.item_description}}</strong></h1>
+                        <div class="product_nav">
+
+                        </div>
+
+                        <div class="price_box">
+                            <span class="current_price">{{inItems.item_price | currency:"CAD"}}</span>
+                            <!-- <span class="old_price">{{inItems.item_price | currency:"CAD"}}</span> -->
+
+                        </div>
+                        <div class="product_desc">
+                            <p>
+                              <img src="assets/img/product/fresh.png"/>
+                            </p>
+                        </div>
+                        <div class="table table-hover">
+                          <div>
+                            <table  class="table table-hover" role="tablist" id="nav-tab"  >
+                              <tr *ngFor="let i of inItems.itemspecification">
+                                <td>
+                                 <strong>{{i}}</strong>
+                               </td>
+
+                              </tr>
+
+
+                            </table>
+                          </div>
+                        </div>
+
+                        <div class="product_variant quantity">
+                            <label>quantity</label>
+                            <input type="text" type="number" id="qty" name="qty" [(ngModel)] ="qty">
+                            <button class="button" (click)="onAddQuantity(inItems)">add to cart</button>
+
+                        </div>
+                        <div class=" product_d_action">
+
+                        </div>
+                        <div class="product_meta">
+                            <!-- <span>Category: <a href="#">Clothing</a></span> -->
+                        </div>
+
+                    </form>
+                    <div class="priduct_social">
+                        <!-- <ul>
+                            <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>
+                            <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> tweet</a></li>
+                            <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i> save</a></li>
+                            <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i> share</a></li>
+                            <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i> linked</a></li>
+                        </ul> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product details end-->
+
+

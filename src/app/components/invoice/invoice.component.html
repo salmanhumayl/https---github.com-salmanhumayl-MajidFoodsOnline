@@ -1,0 +1,96 @@
+<div class="container">
+    <form id="form1">
+      <div id="invoice">
+
+      <div class="toolbar hidden-print" id="printbar">
+          <div class="text-right">
+            <!--   <button id="printInvoice" class="btn btn-info" onclick="Test()"><i class="fa fa-print" ></i> Print</button> -->
+          <hr>
+          </div>
+      </div>
+      <div class="invoice overflow-auto" id="invoiceprint">
+          <div style="min-width: 600px">
+              <header>
+                  <div class="row">
+                      <div class="col">
+                              <img src="assets/img/logo/mirajlogoInvoice.png" class="logo" style="height:10;width:10;"/>
+                      </div>
+                  </div>
+              </header>
+              <main>
+                  <div class="row contacts">
+                      <div class="col invoice-to">
+                          <div class="text-gray-light">INVOICE TO:</div>
+                          <h4 class="to">{{orderdetails[0].CustomerFirstName + ' ' + orderdetails[0].CustomerLastName}} </h4>
+                          <div class="email">{{orderdetails[0].ContactNumber}}</div>
+                          <div class="address">{{orderdetails[0].DeliveryAddress}}</div>
+                          <div class="address">{{orderdetails[0].AreaDescription}}</div>
+                      </div>
+                      <div class="col invoice-details">
+                          <h4 class="invoice-id">INVOICE # {{orderdetails[0].OrderNumber}}</h4>
+                          <div class="date">Invoice Date: {{orderdetails[0].OrderDate | date:'medium'}}</div>
+                          <h1 class="barcode"></h1>
+                      </div>
+                  </div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                          <th>Sno</th>
+                          <th>Description</th>
+                          <th style="text-align: center;">Price</th>
+                          <th style="text-align:center;">Quantity</th>
+                          <th style="text-align: right;">Total</th>
+                      </tr>
+                  </thead>
+                  <tbody *ngFor="let item of orderdetails[0].OrderItems,let sno=index">
+                  <tr >
+                    <td>{{sno +1}}</td>
+                    <td>
+                      {{item.item_Description}}
+                    </td>
+                    <td style="text-align: center;">
+                      {{item.PerUnitPrice | number:'1.2-2'|currency:'CAD' }}
+                  </td>
+                  <td style="text-align: center;">
+                    {{item.OrderedQuantity}}
+                  </td>
+                  <td style="text-align: right;">
+                    {{item.PerUnitPrice * item.OrderedQuantity | number:'1.2-2'|currency:'CAD' }}
+                  </td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                          <tr>
+                              <td colspan="2"></td>
+                              <td colspan="2">Sub Total</td>
+                              <td style="text-align: right;">{{Total | number:'1.2-2' |currency:'CAD' }}</td>
+                          </tr>
+                          <tr>
+                              <td colspan="2"></td>
+                              <td colspan="2">Shipping Charges</td>
+                              <td>{{orderdetails[0].ShipingCharges | number:'1.2-2' |currency:'CAD' }} </td>
+                          </tr>
+                          <tr>
+                              <td colspan="2"></td>
+                              <td colspan="2">Grand Total</td>
+                              <td>{{GrandTotal | number:'1.2-2' |currency:'CAD' }}</td>
+                          </tr>
+                      </table>
+
+                  <div class="thanks">Thank you!</div>
+                  <div class="notices">
+                      <div>NOTICE:</div>
+                      <div class="notice">Amount paid against this invoice as per the referred receipts.</div>
+                  </div>
+              </main>
+              <footer>
+                  Invoice was created on a computer and is valid without the signature and seal.
+              </footer>
+          </div>
+          <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+          <div></div>
+      </div>
+  </div>
+      </form>
+    </div>
+

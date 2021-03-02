@@ -1,0 +1,193 @@
+   <!--breadcrumbs area start-->
+   <div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                   <h3>Checkout</h3>
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li>Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+
+<div class="container">
+  <div  *ngIf="lEmptyCard ==false;" class="text-center my-5">
+    <h4>Your Cart Is Empty</h4>
+    <a href="http://www.mirajfoods.ca/home">GO TO SHOP</a>
+
+  </div>
+  </div>
+
+ <!--Checkout page section-->
+ <div class="Checkout_section mt-70" *ngIf="productAddedTocart.length !== 0" >
+  <div class="container">
+
+       <div class="checkout_form">
+           <div class="row">
+               <div class="col-lg-6 col-md-6">
+                   <form #registration="ngForm" >
+                       <h3>Billing Details</h3>
+                       <div class="row">
+
+                           <div class="col-lg-6 mb-20">
+                               <label>First Name <span>*</span></label>
+                               <input type="text"
+                               id="orderDetail.CustomerFirstName"
+                               name="orderDetail.CustomerFirstName"
+                               [(ngModel)]="orderDetail.CustomerFirstName"
+                               #CustomerFirstNameCtl="ngModel"
+                               required
+                               >
+                           </div>
+                           <div class="col-lg-6 mb-20">
+                               <label>Last Name  <span>*</span></label>
+                               <input type="text"
+                               id="orderDetail.CustomerLastName"
+                               name="orderDetail.CustomerLastName"
+                               [(ngModel)]="orderDetail.CustomerLastName"
+                               #CustomerLastNameCtl="ngModel"
+                               required
+                               >
+                           </div>
+                           <div class="col-12 mb-20">
+                               <label>Phone*</label>
+                               <input type="text"
+                               id="orderDetail.ContactNumber"
+                               name="orderDetail.ContactNumber"
+                               [(ngModel)]="orderDetail.ContactNumber"
+                               #ContNumberCtl="ngModel"
+                               required
+                               >
+                           </div>
+                           <div class="col-12 mb-20">
+                               <label for="country">Area <span>*</span></label>
+                               <select class="select_option" name="area" id="area" (change)="onChange($event.target.value)"
+                                required [(ngModel)]="orderDetail.AreaID">
+                                <option [value]="i.AreaID" *ngFor="let i of ShippingCharges">
+                                     {{i.Area}}
+                                </option>
+
+                            </select>
+                           </div>
+
+                           <div class="col-12 mb-20">
+                               <label>Street address  <span>*</span></label>
+                               <input type="text"
+                               id="orderDetail.DeliveryAddress"
+                               name="orderDetail.DeliveryAddress"
+                               [(ngModel)]="orderDetail.DeliveryAddress"
+                               #DeliveryAddressCtl="ngModel"
+                               required
+                               placeholder="House number and street name"
+                               >
+
+                           </div>
+                           <div class="col-12 mb-20">
+                               <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
+                           </div>
+
+
+                           <div class="col-12">
+                               <div class="order-notes">
+                                    <label for="order_note">Order Notes</label>
+                                   <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                               </div>
+
+                               <div class="col-lg-6 col-md-6">
+                                <div class="coupon_code left">
+                                    <h3>Coupon</h3>
+                                    <div class="coupon_inner">
+                                        <p>Enter your coupon code if you have one.</p>
+                                        <input placeholder="Coupon code" type="text">
+                                        <button type="submit">Apply coupon</button>
+                                    </div>
+                                </div>
+                            </div>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+               <div class="col-lg-6 col-md-6">
+
+                       <h3>Your order</h3>
+                       <div class="order_table table-responsive">
+                           <table >
+                               <thead>
+                                   <tr>
+                                       <th>Product</th>
+                                       <th>Total</th>
+                                   </tr>
+                               </thead>
+                               <tbody *ngFor="let prod of productAddedTocart;let q = index">
+                                   <tr>
+                                       <td> {{prod.item_description}}<strong> × {{prod.qty}}</strong></td>
+                                       <td>{{prod.item_price | currency:'CAD'}}</td>
+                                   </tr>
+                               </tbody>
+                               <tfoot>
+                                   <tr>
+                                       <th>Cart Subtotal</th>
+                                       <td>{{Total | currency:'CAD'}}</td>
+                                   </tr>
+                                   <tr>
+                                       <th>Shipping</th>
+                                       <td><strong>{{orderDetail.ShipingCharges | currency:'CAD'}}</strong></td>
+                                   </tr>
+                                   <tr class="order_total">
+                                       <th>Order Total</th>
+                                       <td><strong>{{GrandTotal | currency:'CAD'}}</strong></td>
+                                   </tr>
+                               </tfoot>
+                           </table>
+                       </div>
+                       <div class="payment_method">
+
+                           <div>
+                               <button (click)="showConfirmation()" [disabled]="registration.invalid" #checkout class="btn btn-danger">Confirm</button><br>
+
+                           </div>
+                       </div>
+
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Confirm & Proceed</h4>
+        <button type="button" class="close" data-dismiss="modal" (click) = "hide()" >&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <span>Click on Confirm & Proceed to continue with this payment for  {{GrandTotal | currency:'CAD'}}</span>
+
+      </div>
+
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+          <button  class="submitBtn btn btn-success" (click)="ConfirmOrder()" #proceed >Confirm & Proceed</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click) = "hide()">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>

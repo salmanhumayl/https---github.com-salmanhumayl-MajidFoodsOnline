@@ -1,0 +1,138 @@
+ <!--breadcrumbs area start-->
+ <div class="breadcrumbs_area">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="breadcrumb_content">
+                 <h3>Login</h3>
+                  <ul>
+                      <li><a href="index.html">home</a></li>
+                      <li>Login</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--breadcrumbs area end-->
+
+  <!-- customer login start -->
+  <div class="customer_login">
+    <div class="container">
+        <div class="row">
+           <!--login area start-->
+            <div class="col-lg-6 col-md-6">
+                <div class="account_form">
+                    <h2>login</h2>
+                    <form  #Loginform="ngForm" (ngSubmit)="Login(Loginform)" >
+
+                        <p>
+                            <label>Username or email <span>*</span></label>
+                            <input type="text"
+                            id="LoginModel.Email"
+                            name="LoginModel.Email"
+                            [(ngModel)]="LoginModel.Email"
+                            #UserNameCtl="ngModel"
+                            required
+                            >
+                         </p>
+                         <p>
+                            <label>Passwords <span>*</span></label>
+                            <input type="password"
+                            id="LoginModel.Password"
+                            name="LoginModel.Password"
+                            [(ngModel)]="LoginModel.Password"
+                            #UserPasswordCtl="ngModel"
+                            required
+                            >
+                         </p>
+                        <div class="login_submit">
+                           <a href="#">Lost your password?</a>
+                            <label for="remember">
+                                <input id="remember" type="checkbox">
+                                Remember me
+                            </label>
+                            <button type="submit" [disabled]="Loginform.invalid">login</button>
+
+                        </div>
+
+                    </form>
+                    <span *ngIf="SuccessLogin" >
+                      <label class="MenuBackground">Logging Please wait..</label>
+                    </span>
+                 </div>
+            </div>
+            <!--login area start-->
+
+            <!--register area start-->
+            <div class="col-lg-6 col-md-6">
+                <div class="account_form register">
+                    <h2>Register</h2>
+                    <form #registration="ngForm" (ngSubmit)="UserRegistration(registration)">
+                      <p>
+                        <label>First Name  <span>*</span></label>
+                        <input type="text"
+                        id="RegistrationModel.FirstName"
+                        name="RegistrationModel.FirstName"
+                        [(ngModel)]="RegistrationModel.FirstName"
+                        #FirstNameCtl="ngModel"
+                        required
+                        >
+                        <!-- <span *ngIf="FirstNameCtl.invalid && FirstNameCtl.touched ">
+                          FirstName is required
+                        </span> -->
+                     </p>
+                     <p>
+                      <label>Last Name  <span>*</span></label>
+                      <input type="text"
+                        id="RegistrationModel.LastName"
+                        name="RegistrationModel.LastName"
+                        [(ngModel)]="RegistrationModel.LastName"
+                        #LastNameCtl="ngModel"
+                        required
+                      >
+                   </p>
+                        <p>
+                            <label>Email address  <span>*</span></label>
+                            <input type="text"
+                            id="email"
+                            name="email"
+                            [(ngModel)]="RegistrationModel.Email"
+                            #email="ngModel"
+                            required
+                          >
+                         <!--  <span  *ngIf="email.errors?.email && email.touched"></span>
+                            Email is invalid
+                         </p> -->
+
+
+                         <p>
+                            <label>Passwords <span>*</span></label>
+                            <input type="password"
+                            id="RegistrationModel.Password"
+                            name="RegistrationModel.Password"
+                            [(ngModel)]="RegistrationModel.Password"
+                            #PasswordCtl="ngModel"
+                            required
+                          >
+                         </p>
+
+                        <div class="login_submit">
+                            <button  [disabled]="registration.invalid" #btnregister>{{buttonText}}</button>
+                        </div>
+                        <span *ngIf="Success">
+                          <label>User Created Successfully..  </label>
+                        </span>
+                        <span *ngIf="UserAlreadyExist">
+                          <label>Email Already Exist</label>
+                        </span>
+
+
+                    </form>
+                </div>
+            </div>
+            <!--register area end-->
+        </div>
+    </div>
+</div>
+<!-- customer login end -->

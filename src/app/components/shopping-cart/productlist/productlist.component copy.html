@@ -1,0 +1,31 @@
+ <div class="product_area  mb-64">
+  <div class="container">
+     <div class="row">
+      <div class="col-12">
+          <div class="product_header">
+              <div class="section_title">
+
+
+              </div>
+              <div class="product_tab_btn">
+                  <ul class="nav" role="tablist" id="nav-tab">
+                    <li *ngFor="let p of MenuModel">
+                      <a class="active" data-toggle="tab"  (click)="RefreshItem(p.catalog_id)" role="tab" aria-controls="plant1" aria-selected="true">
+                        {{p.catalog_description}}
+                      </a>
+                   </li>
+
+                  </ul>
+              </div>
+          </div>
+      </div>
+   </div> -->
+
+
+   <div *ngIf="productitems!=null">
+    <app-product-item [productitem]="productitems"></app-product-item>
+  </div>
+
+  </div>
+</div>
+
