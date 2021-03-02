@@ -32,10 +32,13 @@
                             id="LoginModel.Email"
                             name="LoginModel.Email"
                             [(ngModel)]="LoginModel.Email"
-                            #UserNameCtl="ngModel"
+                            #UserNameCtl="ngModel" email
                             required
                             >
                          </p>
+                         <span class="help-block" *ngIf="UserNameCtl.errors?.email">
+                          Email is invalid
+                        </span>
                          <p>
                             <label>Passwords <span>*</span></label>
                             <input type="password"
@@ -78,7 +81,7 @@
                         #FirstNameCtl="ngModel"
                         required
                         >
-                        <!-- <span *ngIf="FirstNameCtl.invalid && FirstNameCtl.touched ">
+                         <!-- <span *ngIf="FirstNameCtl.invalid && FirstNameCtl.touched ">
                           FirstName is required
                         </span> -->
                      </p>
@@ -98,12 +101,13 @@
                             id="email"
                             name="email"
                             [(ngModel)]="RegistrationModel.Email"
-                            #email="ngModel"
+                            #Ctrlemail="ngModel" email
                             required
                           >
-                         <!--  <span  *ngIf="email.errors?.email && email.touched"></span>
+                           <span class="help-block" *ngIf="Ctrlemail.errors?.email">
                             Email is invalid
-                         </p> -->
+                          </span>
+                         </p>
 
 
                          <p>
