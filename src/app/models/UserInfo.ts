@@ -6,6 +6,7 @@ export class UserInfo
   Email :string;
   Token:string;
   Message:string;
+  lStatus:boolean;
 
 
 }

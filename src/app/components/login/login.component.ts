@@ -46,35 +46,36 @@ export class LoginComponent implements OnInit {
     this.SuccessLogin=true;
     this.authService.removeToken();
     this.authService.Login(this.LoginModel).subscribe(
-      (UserInfo:UserInfo)=>{
-
-       if(UserInfo.Message!="")
-        {
-          this.authService.storeToken(UserInfo.Token);
-          this.authService.StoreUserInfo(UserInfo);
-          this.msg.isLoggedIn$.next(true);
-          this.msg.isWelComeName$.next(UserInfo.FirstName);
-          if (this.returnUrl!=null && this.Source=='X')
+      (response:number)=>{
+       if(response == 0 )
           {
-            this.router.navigateByUrl(this.returnUrl);
+            alert("Invalid Login Credentials")
+            this.SuccessLogin=false;
           }
-          else if (this.Source=='X')
-          {
-            this.router.navigate(['login']);
+        else {
+          this.authService.GetUserInfo(response).subscribe(
+            (UserInfo:UserInfo)=>{
+                this.authService.storeToken(UserInfo.Token);
+                this.authService.StoreUserInfo(UserInfo);
+                this.msg.isLoggedIn$.next(true);
+                this.msg.isWelComeName$.next(UserInfo.FirstName);
+                if (this.returnUrl!=null && this.Source=='X')
+                {
+                  this.router.navigateByUrl(this.returnUrl);
+                }
+                else if (this.Source=='X')
+                {
+                  this.router.navigate(['login']);
+                }
+                else
+                {
+                  form.reset()
+                  //this.SuccessLogin=true;
+                  window.location.href=this.HomeUrl;
+                }
+              }
+            )
           }
-          else
-          {
-            form.reset()
-            //this.SuccessLogin=true;
-            window.location.href=this.HomeUrl;
-          }
-
-        }
-        else
-        {
-          alert("Invalid Login Credentials")
-          this.SuccessLogin=false;
-        }
       }
     );
 

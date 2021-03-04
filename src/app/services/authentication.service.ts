@@ -67,11 +67,25 @@ export class AuthenticationService {
 
   }
 
-  Login (oUser :Login) :Observable<UserInfo> {
-    return this._http.post<UserInfo>(LoginUrl,oUser)
+  Login (oUser :Login) :Observable<number> {
+    return this._http.post<number>(LoginUrl,oUser)
     .pipe(
+      map(result=>{
+
+        return result;
+      }),
+
       catchError(this.handleError)
-  );
+  )
+
+  }
+
+  GetUserInfo(ID:number) :Observable<UserInfo>{
+   alert(LoginUrl+"?iID=" + ID);
+    return this._http.get<UserInfo>(LoginUrl+"/GetUserInfo?iID=" + ID)
+  //  .pipe(
+    //  catchError(this.handleError)
+  //);
   }
 
 }

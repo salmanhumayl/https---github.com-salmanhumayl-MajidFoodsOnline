@@ -7,7 +7,7 @@ export const ProductUrl=baseUrl+ '/catalog?iid=1';
 export const ProductFilterUrl=baseUrl+ '/catalog';
 export const ProductFilterbyCategoryUrl=baseUrl+ '/itembycategory';
 
-export const ProductByIDUrl=baseUrl+ '/item';
+export const AllProductUrl=baseUrl+ '/item';
 
 
 

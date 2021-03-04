@@ -42,8 +42,8 @@ export class ShoppingCartComponent implements AfterViewInit,OnInit,AfterContentI
               animateOut: 'fadeOut',
               loop: true,
               nav: false,
-              autoplay: false,
-              autoplayTimeout: 8000,
+              autoplay: true,
+              autoplayTimeout: 6000,
               items: 1,
               dots:true,
           });

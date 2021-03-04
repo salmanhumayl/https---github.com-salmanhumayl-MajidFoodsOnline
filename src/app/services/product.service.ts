@@ -11,7 +11,7 @@ import{MenuModel} from 'src/app/models/MenuModel';
 import{OrderConfirmation} from 'src/app/models/orderconfirmation';
 
 
-import {AreaChargesUrl, MenuUrl, OrderStatusUrl, ProductByIDUrl, ProductFilterbyCategoryUrl, ProductFilterUrl, ProductUrl} from 'src/app/config/api';
+import {AreaChargesUrl, MenuUrl, OrderStatusUrl, AllProductUrl, ProductFilterbyCategoryUrl, ProductFilterUrl, ProductUrl} from 'src/app/config/api';
 
 import {OrderUrl} from 'src/app/config/api';
 import { Category } from '../models/category';
@@ -163,7 +163,7 @@ export class ProductService {
 
   GetAllProducts():Observable<Product[]>{
 
-    return this._http.get<Product[]>(ProductFilterUrl)
+    return this._http.get<Product[]>(AllProductUrl)
     .pipe(
       catchError(this.handleError)
   );
@@ -189,10 +189,10 @@ export class ProductService {
 
       GetProductsbyid(id:number):Observable<Product>{
 
-        return this._http.get<Product>(ProductByIDUrl + "?iid=" + id)
-        .pipe(
-          catchError(this.handleError)
-      );
+        return this._http.get<Product>(AllProductUrl + "?iid=" + id)
+       // .pipe(
+         // catchError(this.handleError)
+      //);
         }
 
 
