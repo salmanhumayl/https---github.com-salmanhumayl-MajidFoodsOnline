@@ -78,55 +78,51 @@ export class LoginComponent implements OnInit {
           }
       }
     );
-
     }
 
-
-    UserRegistration(form:NgForm){
+   UserRegistration(form:NgForm){
       this.btnregister.nativeElement.disabled=true;
       this.buttonText="Please wait...."
       this.UserAlreadyExist=false;
       this.authService.Registration(this.RegistrationModel).subscribe(
-        (response)=>{
-            if (response!="")
+        (response:number)=>{
+          if (response> 0)
             {
-              this.LoginModel.Email="";
-              this.LoginModel.Password="";
-              this.Success=false;
-              this.UserAlreadyExist=true;
-              this.buttonText="Register";
-              this.btnregister.nativeElement.disabled=false;
-              return false;
+              this.authService.GetUserInfo(response).subscribe(
+                (UserInfo:UserInfo)=>{
+                this.authService.storeToken(UserInfo.Token);
+                this.authService.StoreUserInfo(UserInfo);
+                this.msg.isLoggedIn$.next(true);
+                this.msg.isWelComeName$.next(UserInfo.FirstName);
+                if (this.returnUrl!=null && this.Source=='X')
+                {
+                  this.router.navigateByUrl(this.returnUrl);
+                }
+                else if (this.Source=='X')
+                {
+                  this.router.navigate(['login']);
+                }
+                else
+                {
+                  form.reset()
+                  window.location.href=this.HomeUrl;
+                }
+              }
+            )
             }
+           else
+           {
+            this.Success=false;
+            this.UserAlreadyExist=true;
+            this.buttonText="Register";
+            this.RegistrationModel.FirstName="";
+            this.RegistrationModel.LastName="";
+            this.RegistrationModel.Password="";
+            this.LoginModel.Email=this.RegistrationModel.Email
+            this.RegistrationModel.Email="";
+            this.btnregister.nativeElement.disabled=false;
 
-           this.LoginModel.Email=this.RegistrationModel.Email;
-           this.LoginModel.Password=this.RegistrationModel.Password;
-           this.authService.removeToken();
-           this.authService.Login(this.LoginModel).subscribe(
-
-          (UserInfo:UserInfo)=>{
-              this.Success=true
-              this.UserAlreadyExist=false;
-              this.authService.storeToken(UserInfo.Token);
-              this.authService.StoreUserInfo(UserInfo);
-              this.msg.isLoggedIn$.next(true);
-              this.msg.isWelComeName$.next(UserInfo.FirstName);
-              if (this.returnUrl!=null && this.Source=='X')
-              {
-                this.router.navigateByUrl(this.returnUrl);
-              }
-              else if (this.Source=='X')
-              {
-                this.router.navigate(['login']);
-              }
-              else
-              {
-                form.reset()
-                window.location.href=this.HomeUrl;
-              }
-            }
-      )
-
+           }
      }
       )
 

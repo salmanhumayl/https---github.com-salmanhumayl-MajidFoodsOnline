@@ -54,8 +54,8 @@ export class AuthenticationService {
      localStorage.removeItem("role");
   }
 
-  Registration (oCustomer :Customer) :Observable<string> {
-    return this._http.post<string>(RegisterUrl,oCustomer )
+  Registration (oCustomer :Customer) :Observable<number> {
+    return this._http.post<number>(RegisterUrl,oCustomer )
     .pipe(
       map(result=>{
 
@@ -75,14 +75,13 @@ export class AuthenticationService {
         return result;
       }),
 
-      catchError(this.handleError)
+     // catchError(this.handleError)
   )
 
   }
 
   GetUserInfo(ID:number) :Observable<UserInfo>{
-   alert(LoginUrl+"?iID=" + ID);
-    return this._http.get<UserInfo>(LoginUrl+"/GetUserInfo?iID=" + ID)
+    return this._http.get<UserInfo>(LoginUrl+"?iID=" + ID)
   //  .pipe(
     //  catchError(this.handleError)
   //);

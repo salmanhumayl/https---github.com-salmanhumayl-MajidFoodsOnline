@@ -191,10 +191,17 @@
                                     <div class="header_account_list register" *ngIf="isLoggedIn">
                                       <ul>
                                         <li> Hi {{Name}} </li> &nbsp;
+                                        <a  routerLink='/MyAccount'> My Account</a>
+                                         &nbsp;
                                         <a  routerLink='/logout'>Log Out</a>
 
                                       </ul>
                                     </div>
+                                   <br>
+                                    <DIV>
+
+                                    </DIV>
+
                                     <div class="header_account_list  mini_cart_wrapper"  >
                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">{{cartItemCount}}</span></a>
                                        <!--mini cart-->
