@@ -20,12 +20,13 @@ export class LoginComponent implements OnInit {
   currentUser: UserInfo[]=[];
   RegistrationModel:Customer=new Customer();
   LoginModel:Login=new Login();
-  Success:boolean=false;
-  SuccessLogin:boolean=false;
+
+  SuccessLogin:boolean=true;
   UserAlreadyExist:boolean=false;
   Source:string;
   HomeUrl=HomeUrl;
   buttonText:string="Register"
+  LoginButtonText="Login";
 
   @ViewChild('btnregister') btnregister: ElementRef;
 
@@ -43,14 +44,14 @@ export class LoginComponent implements OnInit {
 
   Login(form:NgForm){
 
-    this.SuccessLogin=true;
+    this.LoginButtonText="Logging Please wait...."
     this.authService.removeToken();
     this.authService.Login(this.LoginModel).subscribe(
       (response:number)=>{
        if(response == 0 )
           {
-            alert("Invalid Login Credentials")
             this.SuccessLogin=false;
+            this.LoginButtonText="Login";
           }
         else {
           this.authService.GetUserInfo(response).subscribe(
@@ -70,7 +71,6 @@ export class LoginComponent implements OnInit {
                 else
                 {
                   form.reset()
-                  //this.SuccessLogin=true;
                   window.location.href=this.HomeUrl;
                 }
               }
@@ -112,7 +112,7 @@ export class LoginComponent implements OnInit {
             }
            else
            {
-            this.Success=false;
+
             this.UserAlreadyExist=true;
             this.buttonText="Register";
             this.RegistrationModel.FirstName="";

@@ -55,13 +55,13 @@
                                 <input id="remember" type="checkbox">
                                 Remember me
                             </label>
-                            <button type="submit" [disabled]="Loginform.invalid">login</button>
+                            <button type="submit" [disabled]="Loginform.invalid">{{LoginButtonText}}</button>
 
                         </div>
 
                     </form>
-                    <span *ngIf="SuccessLogin" >
-                      <label class="MenuBackground">Logging Please wait..</label>
+                    <span *ngIf="!SuccessLogin" >
+                      <label class="MenuBackground"> Invalid Username or email  / Password </label>
                     </span>
                  </div>
             </div>
@@ -124,11 +124,9 @@
                         <div class="login_submit">
                             <button  [disabled]="registration.invalid" #btnregister>{{buttonText}}</button>
                         </div>
-                        <span *ngIf="Success">
-                          <label>User Created Successfully..  </label>
-                        </span>
+
                         <span *ngIf="UserAlreadyExist">
-                          <label>Email Already Exist</label>
+                          <label class="MenuBackground">Email Already Exist</label>
                         </span>
 
 

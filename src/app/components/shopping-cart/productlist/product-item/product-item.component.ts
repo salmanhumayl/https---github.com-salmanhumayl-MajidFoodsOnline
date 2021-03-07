@@ -25,8 +25,13 @@ export class ProductItemComponent implements OnInit,AfterViewInit {
     pullDrag: true,
     dots: false,
     navSpeed: 600,
+    autoWidth:true,
+    autoHeight:true,
+    margin:10,
+    items:4,
+
     navText: ['Previous', 'Next'],
-    responsive: {
+   /*  responsive: {
       0: {
         items: 1
       },
@@ -36,11 +41,11 @@ export class ProductItemComponent implements OnInit,AfterViewInit {
       760: {
         items: 3
       },
-      1000: {
+      960: {
         items: 4
       }
 
-    },
+    }, */
     nav: true
   }
 

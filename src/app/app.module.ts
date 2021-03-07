@@ -42,6 +42,7 @@ import { MyordersComponent } from './components/customer-dashboard/myorders/myor
 import { SpecialoffersComponent } from './components/specialoffers/specialoffers.component';
 import { DeliveryinfoComponent } from './components/deliveryinfo/deliveryinfo.component';
 import { TermconditionsComponent } from './components/termconditions/termconditions.component';
+import { PolicyComponent } from './components/policy/policy.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { TermconditionsComponent } from './components/termconditions/termconditi
     MyordersComponent,
     SpecialoffersComponent,
     DeliveryinfoComponent,
-    TermconditionsComponent
+    TermconditionsComponent,
+    PolicyComponent
   ],
   imports: [
     BrowserModule,

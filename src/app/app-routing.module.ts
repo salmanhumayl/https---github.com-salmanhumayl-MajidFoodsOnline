@@ -19,6 +19,7 @@ import { MyordersComponent } from './components/customer-dashboard/myorders/myor
 import { LogoutComponent } from './components/logout/logout.component';
 import { SpecialoffersComponent } from './components/specialoffers/specialoffers.component';
 import { TermconditionsComponent } from './components/termconditions/termconditions.component';
+import { PolicyComponent } from './components/policy/policy.component';
 
 const routes: Routes = [
   {path:'home',component:ShoppingCartComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:'contactus',component:ContactusComponent},
   {path:'terms',component:TermconditionsComponent},
   {path:'specialoffers',component:SpecialoffersComponent},
+  {path:'policy',component:PolicyComponent},
   {path:'',redirectTo:'/home',pathMatch:'full'}
 
 
