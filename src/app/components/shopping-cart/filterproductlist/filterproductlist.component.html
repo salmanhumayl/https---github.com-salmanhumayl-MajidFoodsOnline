@@ -1,40 +1,52 @@
-
-   <!--breadcrumbs area start-->
-   <div class="breadcrumbs_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="breadcrumb_content">
-                   <!-- <h3>Checkout</h3>
-                    <ul>
-                        <li><a href="index.html">home</a></li>
-                        <li>Checkout</li>
-                    </ul> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--breadcrumbs area end-->
-
-
 <div class="product_area  mb-64">
   <div class="container">
-    <div class="row">
+     <div class="row">
       <div class="col-12">
           <div class="product_header">
               <div class="section_title">
-
-
               </div>
               <div class="product_tab_btn">
-                <div *ngIf="productitems!=null">
-                  <app-product-item [productitem]="productitems"></app-product-item>
-                </div>
-              </div>
-          </div>
-      </div>
-   </div>
+<div class="row" >
 
+  <div class="product_container">
 
+               <div class="col-12">
+                        <div class="tab-pane fade show active" id="plant1" role="tabpanel">
+                          <div class="row" >
+                            <div class="col-3" *ngFor="let productitem of productitems">
+                                    <div class="product_items" >
+                                    <article class="single_product">
+                                        <figure>
+                                            <div class="product_thumb">
+                                                <a class="primary_img" [routerLink]="['/itemdetail',productitem.item_id]"><img [src]="productitem.item_primary_thumb" style="width: 100%"></a>
+                                                <div class="action_links">
+                                                    <ul>
+                                                        <li class="add_to_cart">
 
+                                                          <a id="cart" (click)="addProductToCart(productitem)" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span class="lnr lnr-cart"></span></a>
+                                                        </li>
+                                                        <!--<li class="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span class="lnr lnr-magnifier"></span></a></li>
+                                                         <li class="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-heart"></span></a></li>
+                                                        <li class="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-sync"></span></a></li>
+   -->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <figcaption class="product_content">
+                                                <h4 class="product_name"><a href="product-details.html">{{productitem.item_description}}</a></h4>
+
+                                                <div class="price_box">
+                                                    <span class="current_price">{{productitem.item_price | currency:'$'}}</span>
+
+                                                  <!--   <img  *ngIf="isViewLoading" src="assets/img/product/ng-loader.gif" width="35px" height="35px"/> -->
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </article>
+                                  </div>
+                                </div>
+                            </div>
+                         </div>
+
+                        </div>
+                      </div>

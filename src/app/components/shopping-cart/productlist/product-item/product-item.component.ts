@@ -20,14 +20,13 @@ export class ProductItemComponent implements OnInit,AfterViewInit {
 
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: true,
+    mouseDrag: false,
     touchDrag: true,
-    pullDrag: true,
+    pullDrag: false,
     dots: false,
     navSpeed: 600,
     autoWidth:true,
     autoHeight:true,
-    margin:10,
     items:4,
 
     navText: ['Previous', 'Next'],
