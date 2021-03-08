@@ -5,6 +5,8 @@
       <div class="toolbar hidden-print" id="printbar">
           <div class="text-right">
             <!--   <button id="printInvoice" class="btn btn-info" onclick="Test()"><i class="fa fa-print" ></i> Print</button> -->
+            <button [useExistingCss]="true"
+             printTitle="MIRAJ FOODS" printSectionId="invoiceprint" ngxPrint class="MenuBackground" >Print To PDF</button>
           <hr>
           </div>
       </div>

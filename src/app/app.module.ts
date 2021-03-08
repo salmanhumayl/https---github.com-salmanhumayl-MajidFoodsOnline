@@ -43,6 +43,11 @@ import { SpecialoffersComponent } from './components/specialoffers/specialoffers
 import { DeliveryinfoComponent } from './components/deliveryinfo/deliveryinfo.component';
 import { TermconditionsComponent } from './components/termconditions/termconditions.component';
 import { PolicyComponent } from './components/policy/policy.component';
+import { OrderdetailmodalComponent } from './components/customer-dashboard/orderdetailmodal/orderdetailmodal.component';
+import {NgxPrintModule} from 'ngx-print';
+
+import {ModalModule} from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
@@ -81,7 +86,8 @@ import { PolicyComponent } from './components/policy/policy.component';
     SpecialoffersComponent,
     DeliveryinfoComponent,
     TermconditionsComponent,
-    PolicyComponent
+    PolicyComponent,
+    OrderdetailmodalComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +95,9 @@ import { PolicyComponent } from './components/policy/policy.component';
     FormsModule,
     HttpClientModule,
     CarouselModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPrintModule,
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

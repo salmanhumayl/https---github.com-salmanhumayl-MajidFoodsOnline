@@ -3,6 +3,9 @@ import { OrderDetail } from 'src/app/models/OrderDetail';
 import { UserInfo } from 'src/app/models/UserInfo';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProductService } from 'src/app/services/product.service';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import { OrderdetailmodalComponent } from './orderdetailmodal/orderdetailmodal.component';
+
 
 @Component({
   selector: 'app-customer-dashboard',
@@ -12,8 +15,12 @@ import { ProductService } from 'src/app/services/product.service';
 export class CustomerDashboardComponent implements OnInit {
  OrderDetail:OrderDetail[]=[];
  currentUser: UserInfo;
+ modalRef:BsModalRef;
+
+
   constructor(private _itemService:ProductService,
-    private authService: AuthenticationService) { }
+    private authService: AuthenticationService,
+    private modalService:BsModalService) { }
 
   ngOnInit(): void {
     this.GetLoggedinUserDetails()
@@ -43,6 +50,19 @@ export class CustomerDashboardComponent implements OnInit {
 
     //this.productitems=this._itemService.getProducts();
 
+
+  }
+
+  showDetail(orderno:string){
+    const initialState={
+      orderNumber:orderno,
+      ignoreBackdropClick: true,
+      animated: true,
+      keyboard: true,
+      class: 'modal'
+    };
+
+    this.modalRef = this.modalService.show(OrderdetailmodalComponent,{initialState});
 
   }
 }

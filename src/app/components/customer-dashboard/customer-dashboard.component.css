@@ -1,0 +1,57 @@
+p {
+  font-family: Lato;
+}
+
+.grid-data
+{
+  overflow-y:auto;
+  height:400px;
+}
+
+.grid-data-header {
+  width: 95%;
+  left: 2.5%;
+}
+
+.modal {
+  display: flex;
+  top: 5%;
+  width: 90%;
+}
+
+.modal-header {
+  width: 95%;
+  left: 2.5%;
+}
+
+
+.fixed {
+  width: 100%;
+  min-width: 150px;
+}
+
+.grid-data
+{
+  overflow-y:auto;
+  height:400px;
+}
+
+.grid-data-header {
+  width: 95%;
+  left: 2.5%;
+}
+
+.modal {
+  display: flex;
+  top: 5%;
+  width: 90%;
+}
+
+.modal-header {
+  width: 95%;
+  left: 2.5%;
+}
+
+.modal.show .modal-dialog {
+    height: 400px;
+}
