@@ -44,7 +44,7 @@
                                         <td>{{item.OrderNumber}}</td>
                                         <td>{{item.OrderDate | date:'medium'}}</td>
                                         <td><span class="success">{{item.StatusDescription}}</span></td>
-                                        <td>{{item.Total + item.ShipingCharges | number:'1.2-2' |currency:'CAD'}}</td>
+                                        <td>{{item.Total + item.ShipingCharges  + item.TaxAmount| number:'1.2-2' |currency:'CAD'}}</td>
                                         <td><a class="view" (click)="showDetail(item.OrderNumber)">view</a></td>
                                     </tr>
 

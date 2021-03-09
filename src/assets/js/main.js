@@ -644,8 +644,10 @@
     /*---categories slideToggle---*/
     //$(".categories_title").on("Click", function() {
       $(document).on("click",".categories_title",function(e){
-    //alert('salman');
+   // alert('menusalman');
               $(this).toggleClass('active');
+
+
         $('.categories_menu_toggle').slideToggle('medium');
     });
 
@@ -671,6 +673,7 @@
     /*----------  Category more toggle  ----------*/
 
 	$(".categories_menu_toggle li.hidden").hide();
+
 	   $("#more-btn").on('click', function (e) {
 
 		e.preventDefault();
@@ -709,6 +712,7 @@
 
     /*---Category menu---*/
     function categorySubMenuToggle(){
+
         $('.categories_menu_toggle li.menu_item_children > a').on('click', function(){
         if($(window).width() < 991){
             $(this).removeAttr('href');

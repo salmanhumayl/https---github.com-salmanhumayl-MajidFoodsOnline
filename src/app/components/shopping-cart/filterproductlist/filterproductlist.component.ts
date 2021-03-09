@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { ProductService } from 'src/app/services/product.service';
+declare const $:any;
 
 @Component({
   selector: 'app-filterproductlist',
@@ -45,7 +46,8 @@ export class FilterproductlistComponent implements OnInit {
           (data)=>{
 
             this.productitems=data;
-          // console.log(this.productitems);
+            this.RefreshMenu();
+         //  console.log(this.productitems);
         },
         error => {
                   alert(error);
@@ -62,7 +64,8 @@ export class FilterproductlistComponent implements OnInit {
           (data)=>{
 
             this.productitems=data;
-          // console.log(this.productitems);
+            this.RefreshMenu();
+            console.log(this.productitems);
         },
         error => {
                   alert(error);
@@ -75,6 +78,13 @@ export class FilterproductlistComponent implements OnInit {
 
   }
 
+  RefreshMenu()
+  {
+    //alert(22);
+   // alert($('.categories_menu_toggle'));
+  //  $('.categories_menu_toggle').toggleClass('hidden');
+
+  }
 
 
   addProductToCart(product:Product){
@@ -112,9 +122,9 @@ export class FilterproductlistComponent implements OnInit {
       this.isViewLoading=false;
     }, 1000);
 
-    this.msg.updateCartCount(this.cartItems.length);
-
-    this.msg.sendMsg(this.cartItems);
+   // this.msg.updateCartCount(this.cartItems.length);
+     this.msg.updateCartCount(this._itemService.CartCount());
+     this.msg.sendMsg(this.cartItems);
 
 
   }

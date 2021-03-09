@@ -250,6 +250,16 @@ export class ProductService {
     return subTotal;
   }
 
+   CartCount(){
+     let count:number=0;
+     let productAddedTocart:Product[];
+     productAddedTocart=JSON.parse(localStorage.getItem('product'));
+    for (var i = 0; i < productAddedTocart.length; i++) {
+        count=+count + +productAddedTocart[i].qty;
+    }
+    return count;
+   }
+
    PlaceOrder (orderDetail:OrderDetail) :Observable<OrderConfirmation> {
     return this._http.post<OrderConfirmation>(OrderUrl,orderDetail)
     .pipe(

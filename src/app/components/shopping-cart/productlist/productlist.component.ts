@@ -37,7 +37,7 @@ export class ProductlistComponent implements OnInit  {
 
         (data)=>{
           this.productitems=data;
-          console.log(this.productitems)
+        //  console.log(this.productitems)
       },
       error => {
                  alert(error);
@@ -71,7 +71,7 @@ RefreshItem(catelogid:number){
   this._itemService.GetItemByCatelog(catelogid).subscribe(
 
     (data)=>{
-    //  alert(data);
+
       this.productitems=data;
      // console.log(this.productitems);
   },

@@ -47,7 +47,7 @@ DeleteProduct(product:Product)
       this.productAddedTocart=this._itemService.getProductFromCart();
       this.msg.sendMsg(this.productAddedTocart);
       this.CalculateTotal(this.productAddedTocart);
-      this.msg.updateCartCount(this.productAddedTocart.length);
+      this.msg.updateCartCount(this._itemService.CartCount());
 
 
 }

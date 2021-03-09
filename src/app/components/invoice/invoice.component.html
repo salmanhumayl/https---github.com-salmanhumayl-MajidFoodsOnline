@@ -24,9 +24,10 @@
                       <div class="col invoice-to">
                           <div class="text-gray-light">INVOICE TO:</div>
                           <h4 class="to">{{orderdetails[0].CustomerFirstName + ' ' + orderdetails[0].CustomerLastName}} </h4>
-                          <div class="email">{{orderdetails[0].ContactNumber}}</div>
                           <div class="address">{{orderdetails[0].DeliveryAddress}}</div>
+                          <div class="address">{{orderdetails[0].DeliveryAddress1}}</div>
                           <div class="address">{{orderdetails[0].AreaDescription}}</div>
+                          <div class="email">{{orderdetails[0].ContactNumber}}</div>
                       </div>
                       <div class="col invoice-details">
                           <h4 class="invoice-id">INVOICE # {{orderdetails[0].OrderNumber}}</h4>
@@ -72,6 +73,11 @@
                               <td colspan="2">Shipping Charges</td>
                               <td>{{orderdetails[0].ShipingCharges | number:'1.2-2' |currency:'CAD' }} </td>
                           </tr>
+                          <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">HST 13%</td>
+                            <td>{{orderdetails[0].TaxAmount | number:'1.2-2' |currency:'CAD' }} </td>
+                        </tr>
                           <tr>
                               <td colspan="2"></td>
                               <td colspan="2">Grand Total</td>

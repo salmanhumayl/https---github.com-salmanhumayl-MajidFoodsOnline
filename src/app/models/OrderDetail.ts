@@ -9,6 +9,7 @@ export class OrderDetail
      CustomerFirstName:string;
      CustomerLastName:string;
      DeliveryAddress:string;
+     DeliveryAddress1:string;
      AreaID :number
      ShipingCharges :number=0;
      ContactNumber:string;

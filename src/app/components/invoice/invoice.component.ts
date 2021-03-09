@@ -42,7 +42,7 @@ export class InvoiceComponent implements OnInit {
      {
        next:(data)=>{
          this.orderdetails=data;
-          console.log(this.orderdetails);
+          //console.log(this.orderdetails);
          data[0].OrderItems.forEach(cs=>{
 
            let qtyprice= cs.OrderedQuantity * cs.PerUnitPrice;
@@ -53,7 +53,7 @@ export class InvoiceComponent implements OnInit {
        })
      },
      complete:()=>{
-         this.GrandTotal= this.Total +  + this.orderdetails[0].ShipingCharges;
+         this.GrandTotal= this.Total +  + this.orderdetails[0].ShipingCharges + this.orderdetails[0].TaxAmount;
 
      }
    }

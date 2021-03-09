@@ -142,8 +142,11 @@ export class ProductItemComponent implements OnInit,AfterViewInit {
       this.isViewLoading=false;
     }, 1000);
 
-    this.msg.updateCartCount(this.cartItems.length);
+    //this.msg.updateCartCount(this.cartItems.length);
+    //let productAddedTocart:Product[];
+    //productAddedTocart=this._itemService.getProductFromCart();
 
+    this.msg.updateCartCount(this._itemService.CartCount());
     this.msg.sendMsg(this.cartItems);
 
 

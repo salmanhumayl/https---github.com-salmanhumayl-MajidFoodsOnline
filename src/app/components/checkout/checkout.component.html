@@ -57,46 +57,55 @@
                                >
                            </div>
                            <div class="col-12 mb-20">
-                               <label>Phone*</label>
-                               <input type="text"
-                               id="orderDetail.ContactNumber"
-                               name="orderDetail.ContactNumber"
-                               [(ngModel)]="orderDetail.ContactNumber"
-                               #ContNumberCtl="ngModel"
-                               required
-                               >
-                           </div>
-                           <div class="col-12 mb-20">
-                               <label for="country">Area <span>*</span></label>
-                               <select class="select_option" name="area" id="area" (change)="onChange($event.target.value)"
-                                required [(ngModel)]="orderDetail.AreaID">
-                                <option [value]="i.AreaID" *ngFor="let i of ShippingCharges">
-                                     {{i.Area}}
-                                </option>
-
-                            </select>
-                           </div>
-
-                           <div class="col-12 mb-20">
-                               <label>Street address  <span>*</span></label>
+                               <label>Primary address  <span>*</span></label>
                                <input type="text"
                                id="orderDetail.DeliveryAddress"
                                name="orderDetail.DeliveryAddress"
                                [(ngModel)]="orderDetail.DeliveryAddress"
                                #DeliveryAddressCtl="ngModel"
                                required
-                               placeholder="House number and street name"
+                               placeholder="Address and street name"
                                >
 
                            </div>
                            <div class="col-12 mb-20">
-                               <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                           </div>
+                            <label>Unit No / Apartment<span>*</span></label>
+                            <input type="text"
+                              id="orderDetail.DeliveryAddress1"
+                              name="orderDetail.DeliveryAddress1"
+                              [(ngModel)]="orderDetail.DeliveryAddress1"
+                              #DeliveryAddressCtl="ngModel"
+                              required
+                              placeholder="Apartment, suite, unit etc"
+                            >
+                          </div>
+                          <div class="col-12 mb-20">
+                            <label for="country">City <span>*</span></label>
+                            <select class="select_option" name="area" id="area" (change)="onChange($event.target.value)"
+                             required [(ngModel)]="orderDetail.AreaID">
+                             <option [value]="i.AreaID" *ngFor="let i of ShippingCharges">
+                                  {{i.Area}}
+                             </option>
+
+                         </select>
+                        </div>
+
+                        <div class="col-12 mb-20">
+                          <label>Phone<span>*</span></label>
+                          <input type="text"
+                          id="orderDetail.ContactNumber"
+                          name="orderDetail.ContactNumber"
+                          [(ngModel)]="orderDetail.ContactNumber"
+                          #ContNumberCtl="ngModel"
+                          required
+                          >
+                      </div>
+
 
 
                            <div class="col-12">
                                <div class="order-notes">
-                                    <label for="order_note">Order Notes</label>
+                                    <label for="order_note">Special Notes</label>
                                    <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                </div>
 
@@ -128,20 +137,24 @@
                                <tbody *ngFor="let prod of productAddedTocart;let q = index">
                                    <tr>
                                        <td> {{prod.item_description}}<strong> × {{prod.qty}}</strong></td>
-                                       <td>{{prod.item_price | currency:'CAD'}}</td>
+                                       <td> {{ prod.qty * prod.item_price | currency:'CAD'}}</td>
                                    </tr>
                                </tbody>
                                <tfoot>
                                    <tr>
-                                       <th>Cart Subtotal</th>
-                                       <td>{{Total | currency:'CAD'}}</td>
+                                       <th>Sub Total</th>
+                                       <td><strong>{{Total | currency:'CAD'}}</strong></td>
                                    </tr>
                                    <tr>
-                                       <th>Shipping</th>
+                                       <th>Shipping Charges</th>
                                        <td><strong>{{orderDetail.ShipingCharges | currency:'CAD'}}</strong></td>
                                    </tr>
+                                   <tr>
+                                    <th>HST 13%</th>
+                                    <td><span style="color: red;font-weight: bold;">{{TaxAmount | currency:'CAD'}}</span></td>
+                                </tr>
                                    <tr class="order_total">
-                                       <th>Order Total</th>
+                                       <th>Grand Total</th>
                                        <td><strong>{{GrandTotal | currency:'CAD'}}</strong></td>
                                    </tr>
                                </tfoot>

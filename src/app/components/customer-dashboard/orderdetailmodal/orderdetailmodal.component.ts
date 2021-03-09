@@ -40,7 +40,7 @@ export class OrderdetailmodalComponent implements OnInit {
        })
      },
      complete:()=>{
-         this.GrandTotal= this.Total +  + this.orderdetails[0].ShipingCharges;
+         this.GrandTotal= this.Total +  + this.orderdetails[0].ShipingCharges + this.orderdetails[0].TaxAmount ;
 
      }
    }

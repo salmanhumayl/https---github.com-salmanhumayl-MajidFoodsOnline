@@ -125,6 +125,7 @@ export class ProductDetailComponent implements OnInit {
           item_primary_thumb:product.item_primary_thumb,
           item_secondary_thumb:product.item_secondary_thumb,
           qty:this.qty,
+          ApplyTax:product.ApplyTax,
           itemsimages:['assets/img/product01.png','assets/img/product01.png'],
           itemspecification:product.itemspecification
 
@@ -139,7 +140,8 @@ export class ProductDetailComponent implements OnInit {
 
 
 
-      this.msg.updateCartCount(this.productAddedTocart.length);
+      //this.msg.updateCartCount(this.productAddedTocart.length);
+      this.msg.updateCartCount(this._itemService.CartCount());
       this.msg.sendMsg(this.productAddedTocart); //give refecne of localstorage
 
       alert("Item Addedd....");

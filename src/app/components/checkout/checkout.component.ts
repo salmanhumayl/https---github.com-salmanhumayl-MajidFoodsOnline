@@ -30,6 +30,8 @@ export class CheckoutComponent implements OnInit {
   HomeUrl=HomeUrl;
   mTotal:number;
   showModal: boolean;
+  TaxableAmount:number=0;
+  TaxAmount:number=0;
 
   /* @ViewChild('form') form: ElementRef;
   @ViewChild('AJESMerchantID') MerchantID : ElementRef;
@@ -103,9 +105,8 @@ ConfirmOrder(){
   this.orderItem=[];
 
 
-    this.orderDetail.CustomerId= this.currentUser.CustomerID;
+  this.orderDetail.CustomerId= this.currentUser.CustomerID;
   this.orderDetail.OrderPayMethod="CC";
-
 
   this.productAddedTocart=this._itemService.getProductFromCart();
 
@@ -123,6 +124,7 @@ ConfirmOrder(){
 
   }
   this.orderDetail.Total=this.Total;
+  this.orderDetail.TaxAmount=this.TaxAmount;
      this.orderDetail.OrderItems=this.orderItem;
      this._itemService.PlaceOrder(this.orderDetail).subscribe(
         (data:OrderConfirmation)=>{
@@ -154,23 +156,60 @@ GetLoggedinUserDetails()
 }
 
 onChange(value:number){
+  this.TaxableAmount=0;
+  this.TaxableAmount=this.GetTaxItemAmount();
+  let mTaxAmount:number=0;
+  this.TaxAmount=0;
+
   this.orderDetail.ShipingCharges=0;
   let area =this.ShippingCharges.find(p=>p.AreaID==value)
   let Total=this._itemService.CalculateTotal(this.productAddedTocart);
 
     if (Total < area.ChargeBelow )
       {
-        this.msg.updateShippingCharges(area.Rate); //there was no need of shared service calling , jst made it....
-        this.msg.getShippingCharges().subscribe((ShippingCharges:number)=>{
+          this.msg.updateShippingCharges(area.Rate); //there was no need of shared service calling , jst made it....
+          this.msg.getShippingCharges().subscribe((ShippingCharges:number)=>{
           this.orderDetail.ShipingCharges = ShippingCharges;
        })
-        this.GrandTotal=+Total + +area.Rate;
+        if ( this.TaxableAmount > 0 )
+        {
+          mTaxAmount=this.CalculateTax(area.Rate);
+          this.TaxAmount=+mTaxAmount.toFixed(2);
+          this.GrandTotal=+Total + area.Rate + this.TaxAmount;
+        }
+        else
+        {
+          this.GrandTotal=+Total + area.Rate;
+        }
+
      }
+     else
+          {
+            mTaxAmount=this.CalculateTax(0);
+            this.TaxAmount=+mTaxAmount.toFixed(2);
+            this.GrandTotal=+Total +this.TaxAmount ;
+         }
 
-       else{
-            this.GrandTotal=Total;
-       }
+}
 
+GetTaxItemAmount()
+{
+  let TaxAmount:number=0;
+  for (let i in this.productAddedTocart)
+      {
+        if (this.productAddedTocart[i].ApplyTax===true)
+        {
+           TaxAmount=+TaxAmount + this.productAddedTocart[i].qty * this.productAddedTocart[i].item_price;
+
+        }
+      }
+
+      return TaxAmount;
+}
+
+CalculateTax(Rate:number){
+//mTaxAmount=+(this.TaxableAmount+ + area.Rate) * 13 / 100;
+ return (this.TaxableAmount + Rate) * 13 / 100;
 }
 
 RedirectHome(){
