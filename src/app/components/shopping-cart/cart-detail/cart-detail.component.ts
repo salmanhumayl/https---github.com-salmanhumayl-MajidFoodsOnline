@@ -60,6 +60,7 @@ onAddQuantity(product:Product)
     this._itemService.removeAllProductFromCart();
     this._itemService.AddProductToCard(this.productAddedTocart);
     this.productAddedTocart=this._itemService.getProductFromCart();
+    this.msg.updateCartCount(this._itemService.CartCount());
     this.msg.sendMsg(this.productAddedTocart); //give refecne of localstorage
     this.CalculateTotal(this.productAddedTocart);
 
@@ -73,6 +74,7 @@ onRemoveQuantity(product:Product)
     this._itemService.removeAllProductFromCart();
     this._itemService.AddProductToCard(this.productAddedTocart);
     this.productAddedTocart=this._itemService.getProductFromCart();
+    this.msg.updateCartCount(this._itemService.CartCount());
     this.msg.sendMsg(this.productAddedTocart); //give refecne of localstorage
     this.CalculateTotal(this.productAddedTocart);
   }

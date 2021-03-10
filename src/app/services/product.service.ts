@@ -251,6 +251,7 @@ export class ProductService {
   }
 
    CartCount(){
+
      let count:number=0;
      let productAddedTocart:Product[];
      productAddedTocart=JSON.parse(localStorage.getItem('product'));
