@@ -36,7 +36,7 @@
                                         <th>Date</th>
                                         <th>Status</th>
                                         <th>Total</th>
-                                        <th>Actions</th>
+                                        <th>View</th>
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let item of OrderDetail,let sno=index" >
@@ -45,7 +45,7 @@
                                         <td>{{item.OrderDate | date:'medium'}}</td>
                                         <td><span class="success">{{item.StatusDescription}}</span></td>
                                         <td>{{item.Total + item.ShipingCharges  + item.TaxAmount| number:'1.2-2' |currency:'CAD'}}</td>
-                                        <td><a class="view" (click)="showDetail(item.OrderNumber)">view</a></td>
+                                        <td><a class="view" (click)="showDetail(item.OrderNumber)">Order Detail</a></td>
                                     </tr>
 
                                 </tbody>

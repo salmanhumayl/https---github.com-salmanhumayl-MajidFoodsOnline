@@ -11,6 +11,7 @@ export class OrderDetail
      DeliveryAddress:string;
      DeliveryAddress1:string;
      AreaID :number
+     PostalCode:string;
      ShipingCharges :number=0;
      ContactNumber:string;
      OrderPayMethod :string;

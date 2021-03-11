@@ -848,6 +848,7 @@
 	transform: translateX(100%);
   overflow: scroll;
 	&.active{
+    overflow: scroll;
 		transform: translateX(0);
 		transition: .5s;
 	}

@@ -1,6 +1,6 @@
 <div class="modal-content" style="width:100%">
   <div class="modal-header">
-     <h4 class="modal-title pull-left">Invoice</h4>
+     <h4 class="modal-title pull-left">Order Detail</h4>
      <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
        <span aria-hidden="true">&times;</span>
      </button>
@@ -15,8 +15,9 @@
     <div class="toolbar hidden-print" id="printbar">
         <div class="text-right">
           <!--   <button id="printInvoice" class="btn btn-info" onclick="Test()"><i class="fa fa-print" ></i> Print</button> -->
-          <button [useExistingCss]="true"
-           printTitle="MIRAJ FOODS" printSectionId="invoiceprint" ngxPrint class="MenuBackground" >Print To PDF</button>
+          <!-- <button [useExistingCss]="true"
+           printTitle="MIRAJ FOODS" printSectionId="invoiceprint" ngxPrint class="MenuBackground" >Print To PDF
+          </button> -->
         <hr>
         </div>
     </div>
@@ -25,7 +26,7 @@
             <header>
                 <div class="row">
                     <div class="col">
-                            <img src="assets/img/logo/mirajlogoInvoice.png" class="logo" style="height:10;width:10;"/>
+                            <img src="assets/img/logo/mirajlogoInvoice.png" class="logo" />
                     </div>
                 </div>
             </header>

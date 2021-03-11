@@ -91,6 +91,18 @@
                         </div>
 
                         <div class="col-12 mb-20">
+                          <label>Postal Code<span>*</span></label>
+                          <input type="text"
+                            id="orderDetail.PostalCode"
+                            name="orderDetail.PostalCode"
+                            [(ngModel)]="orderDetail.PostalCode"
+                            #DeliveryAddressCtl="ngModel"
+                            required
+                            placeholder="PostalCode"
+                          >
+                        </div>
+
+                        <div class="col-12 mb-20">
                           <label>Phone<span>*</span></label>
                           <input type="text"
                           id="orderDetail.ContactNumber"

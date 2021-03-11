@@ -277,7 +277,9 @@
                                               <div class="row">
                                                 <div class="col-md-4" *ngFor="let c of p.Category">
 
-                                                  <a [routerLink]="['/filterproduct',c.Category_ID,'CAT']"><b><u>{{c.Category_Description}}</u></b></a>
+                                                 <!--  <a [routerLink]="['/filterproduct',c.Category_ID,'CAT']"><b><u>{{c.Category_Description}}</u></b></a> -->
+                                                 <a href="filterproduct/{{c.Category_ID}}/CAT"><b><u>{{c.Category_Description}}</u></b></a>
+
 
                                                 <!--  <ul class="categorie_sub_menu"  *ngFor="let item of c.item">
                                                       <li><a [routerLink]="['/itemdetail',item.item_id]">{{item.item_description}}</a></li>
