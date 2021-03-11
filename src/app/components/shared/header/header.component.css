@@ -1,10 +1,3 @@
-.ScrollStyle
-{
-    max-height: 500px;
-    overflow-y: scroll;
-}
-
-.MenuBackground{
-
-  color: #40A944;
+.mini_cart {
+  overflow: scroll;
 }
