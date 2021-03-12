@@ -16,7 +16,7 @@ export class ProductImagesComponent implements OnInit {
 
   urlChange(newUrl: string) {
     // alert(newUrl);
-     this.items1.item_primary_thumb = newUrl;
+     this.items1.item_secondary_thumb = newUrl;
    }
 
 }
