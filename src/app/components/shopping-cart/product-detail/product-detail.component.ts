@@ -125,6 +125,8 @@ export class ProductDetailComponent implements OnInit {
           item_primary_thumb:product.item_primary_thumb,
           item_secondary_thumb:product.item_secondary_thumb,
           qty:this.qty,
+          item_size:product.item_size,
+          item_uom:product.item_uom,
           ApplyTax:product.ApplyTax,
           itemsimages:['assets/img/product01.png','assets/img/product01.png'],
           itemspecification:product.itemspecification

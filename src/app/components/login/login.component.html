@@ -50,11 +50,7 @@
                             >
                          </p>
                         <div class="login_submit">
-                           <a href="#">Lost your password?</a>
-                            <label for="remember">
-                                <input id="remember" type="checkbox">
-                                Remember me
-                            </label>
+                           <a (click)="openlostpassword(template)">Lost your password?</a>
                             <button type="submit" [disabled]="Loginform.invalid">{{LoginButtonText}}</button>
 
                         </div>
@@ -139,5 +135,43 @@
 </div>
 <!-- customer login end -->
 
+
+
+<ng-template #template>
+  <!--forget area start-->
+  <div class="modal-header">
+      <div class="account_form register">
+          <h2 class="modal-title">Lost Password</h2>
+          <button type="button" class="close pull-right" arial-label="close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-body">
+            <form #recovery="ngForm" (ngSubmit)="forgetpassword()">
+              <p>
+                  <label>Email address  <span>*</span></label>
+                  <input type="text"
+                  id="email"
+                  name="email"
+                  [(ngModel)]="RecoveryEmail"
+                  #CtrlRecoveryemail="ngModel" email
+                  required
+                >
+                 <span class="help-block" *ngIf="CtrlRecoveryemail.errors?.email">
+                  Email is invalid
+                </span>
+               </p>
+
+              <div class="login_submit">
+                  <button  [disabled]="recovery.invalid" #btnrecovery>Submit</button>
+              </div>
+
+
+
+            </form>
+          </div>
+      </div>
+  </div>
+  <!--register area end-->
+</ng-template>
 
 

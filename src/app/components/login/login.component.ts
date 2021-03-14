@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MessengerService } from 'src/app/services/messenger.service';
@@ -8,6 +8,7 @@ import {Login} from '../../models/Login';
 import { NgForm } from '@angular/forms';
 import { HomeUrl } from 'src/app/config/api';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -27,12 +28,15 @@ export class LoginComponent implements OnInit {
   HomeUrl=HomeUrl;
   buttonText:string="Register"
   LoginButtonText="Login";
+  modalRef:BsModalRef;
+  RecoveryEmail:string;
 
   @ViewChild('btnregister') btnregister: ElementRef;
 
   constructor(private msg:MessengerService,public authService: AuthenticationService,
     private router:Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private modalService:BsModalService) { }
 
 
   ngOnInit(): void {
@@ -125,6 +129,16 @@ export class LoginComponent implements OnInit {
            }
      }
       )
+
+     }
+
+     public openlostpassword(template:TemplateRef<any>)
+     {
+       this.modalRef=this.modalService.show(template);
+     }
+
+     forgetpassword(){
+      window.location.href=this.HomeUrl;
 
      }
 }
