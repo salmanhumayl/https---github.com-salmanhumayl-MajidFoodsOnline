@@ -270,15 +270,16 @@
                               </div>
                               <div class="categories_menu_toggle" >
                                   <ul>
-                                      <li class="menu_itnm_children" *ngFor="let p of MenuModel">
+                                      <li class="menu_item_children" *ngFor="let p of MenuModel">
                                               <a href="#">{{p.catalog_description}}<i class="fa fa-angle-right"></i></a>
 
                                           <ul class="categories_mega_menu" >
                                               <div class="row">
                                                 <div class="col-md-4" *ngFor="let c of p.Category">
-
+                                                  <li class="menu_item_children"><a href="filterproduct/{{c.Category_ID}}/CAT"><b><u>{{c.Category_Description}}</u></b></a>
+                                                   </li>
                                                  <!--  <a [routerLink]="['/filterproduct',c.Category_ID,'CAT']"><b><u>{{c.Category_Description}}</u></b></a> -->
-                                                 <a href="filterproduct/{{c.Category_ID}}/CAT"><b><u>{{c.Category_Description}}</u></b></a>
+
 
 
                                                 <!--  <ul class="categorie_sub_menu"  *ngFor="let item of c.item">

@@ -823,6 +823,7 @@
 
     //$('.mini_cart_close,.off_canvars_overlay').on('click', function(){ //salman
       $(document).on("click",".mini_cart_close,.off_canvars_overlay", function(){
+
         $('.mini_cart,.off_canvars_overlay').removeClass('active')
     });
 
