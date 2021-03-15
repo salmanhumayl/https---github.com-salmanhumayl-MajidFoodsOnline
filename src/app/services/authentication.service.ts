@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 
-import { LoginUrl, RegisterUrl } from '../config/api';
+import { ForgetUrl, LoginUrl, RegisterUrl } from '../config/api';
 
 import {Customer} from 'src/app/models/customer';
 import { Login } from '../models/Login';
@@ -67,6 +67,8 @@ export class AuthenticationService {
 
   }
 
+
+
   Login (oUser :Login) :Observable<number> {
     return this._http.post<number>(LoginUrl,oUser)
     .pipe(
@@ -87,4 +89,19 @@ export class AuthenticationService {
   //);
   }
 
+
+
+
+  LostPassword (strMail :string) :Observable<boolean> {
+    return this._http.get<boolean>(ForgetUrl+"?strMail=" + strMail )
+    .pipe(
+      map(result=>{
+
+        return result;
+      }),
+
+      catchError(this.handleError)
+  )
+
+  }
 }

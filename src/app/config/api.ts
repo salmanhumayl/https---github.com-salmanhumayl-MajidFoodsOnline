@@ -17,6 +17,7 @@ export const MenuUrl=baseUrl+ '/Menu';;
 export const OrderUrl=baseUrl+ '/order';
 export const RegisterUrl=baseUrl+ '/Customer';
 export const LoginUrl=baseUrl+ '/Login';
+export const ForgetUrl=baseUrl+ '//ForgotPassword/Forgot';
 
 export const AreaChargesUrl=baseUrl+ '/delivery';
 export const OrderStatusUrl=baseUrl+ '/OrderStatus';

@@ -28,8 +28,10 @@ export class LoginComponent implements OnInit {
   HomeUrl=HomeUrl;
   buttonText:string="Register"
   LoginButtonText="Login";
+  ForgetPassword="Submit"
   modalRef:BsModalRef;
   RecoveryEmail:string;
+  EmailSent:string="X";
 
   @ViewChild('btnregister') btnregister: ElementRef;
 
@@ -134,12 +136,33 @@ export class LoginComponent implements OnInit {
 
      public openlostpassword(template:TemplateRef<any>)
      {
+       this.EmailSent="X";
+       this.RecoveryEmail="";
+       this.ForgetPassword="Submit";
        this.modalRef=this.modalService.show(template);
      }
 
      forgetpassword(){
-      window.location.href=this.HomeUrl;
+      this.EmailSent='X';
+      this.ForgetPassword="Please Wait";
+      this.authService.LostPassword(this.RecoveryEmail).subscribe(
+        (response:boolean)=>{
+          {
+              if (response==true){
+                  this.EmailSent="Y";
+                  this.ForgetPassword="Submit";
+              }
+              else
+              {
+                this.EmailSent="N";
+                this.ForgetPassword="Submit";
+              }
+          }
 
-     }
+      }
+      );
+
+
 }
 
+}

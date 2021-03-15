@@ -644,7 +644,7 @@
     /*---categories slideToggle---*/
     //$(".categories_title").on("Click", function() {
       $(document).on("click",".categories_title",function(e){
-   // alert('menusalman');
+   // alert('salman');
               $(this).toggleClass('active');
 
 

@@ -47,6 +47,7 @@ export class HeaderComponent implements OnInit,AfterViewInit {
 
 
   ngOnInit(): void {
+
     this.GetMenu();
     this.GetLoggedinUserDetails();
     this.productAddedTocart=this._itemService.getProductFromCart(); // in case user click f5 / refresh
@@ -129,5 +130,7 @@ GetMenu()
     );
 
 }
+
+
 
 }
