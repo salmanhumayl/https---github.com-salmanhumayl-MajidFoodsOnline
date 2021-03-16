@@ -22,17 +22,7 @@
     }
 }
 
-.breadcrumbs_area_checkout{
-  background: url(../img/bg/payment.jpg) no-repeat 0 0;
-  background-size: cover;
- height: 200px;
-  display: flex;
-  align-items: center;
-  @media #{$large-mobile}{
-      background-position: 16%;
-      height: 105px;
-  }
-}
+
 
 .breadcrumb_content{
     text-align: center;

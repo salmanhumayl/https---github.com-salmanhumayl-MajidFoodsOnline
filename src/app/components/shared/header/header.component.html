@@ -276,7 +276,8 @@
                                           <ul class="categories_mega_menu" >
                                               <div class="row">
                                                 <div class="col-md-4" *ngFor="let c of p.Category">
-                                                  <li class="menu_item_children"><a href="filterproduct/{{c.Category_ID}}/CAT"><b><u>{{c.Category_Description}}</u></b></a>
+                                                  <li class="menu_item_children">
+                                                    <a href="filterproduct/{{c.Category_ID}}/CAT"><b><u>{{c.Category_Description}}</u></b></a>
                                                    </li>
                                                  <!--  <a [routerLink]="['/filterproduct',c.Category_ID,'CAT']"><b><u>{{c.Category_Description}}</u></b></a> -->
 
