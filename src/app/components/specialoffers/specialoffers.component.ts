@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-specialoffers',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpecialoffersComponent implements OnInit {
 
-  constructor() { }
+  dealproductitems:Product[]=[]; //blank array to start with
+  constructor(private _itemService:ProductService) { }
 
   ngOnInit(): void {
+    this.ShowDeals(2);
+  }
+
+  ShowDeals(dealid:number)
+  {
+
+         this._itemService.GetDeal(dealid).subscribe(
+
+        (data)=>{
+          this.dealproductitems=data;
+
+
+      },
+      error => {
+                 alert(error);
+
+               }
+      );
+
+
+
+
   }
 
 }

@@ -169,6 +169,13 @@ export class ProductService {
   );
     }
 
+    GetDeal(dealid:number):Observable<Product[]>{
+      return this._http.get<Product[]>("http://eservices.mirajfoods.ca/api/deal?iid=" + dealid)
+      .pipe(
+        catchError(this.handleError)
+    );
+      }
+
 
     GetItemByCatelog(catelogid:number):Observable<Product[]>{
 
