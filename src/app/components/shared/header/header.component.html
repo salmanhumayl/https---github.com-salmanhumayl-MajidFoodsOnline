@@ -217,14 +217,14 @@
                                                </div>
                                                <div class="cart_item"  *ngFor="let c of productAddedTocart;let q = index" >
                                                   <div class="cart_img">
-                                                      <a href="#"><img src="{{c.item_primary_thumb}}" alt=""></a>
+                                                      <a [routerLink]="['/itemdetail',c.item_id]"><img src="{{c.item_primary_thumb}}" alt=""></a>
                                                   </div>
                                                    <div class="cart_info">
                                                        <a href="#">{{c.item_description}}</a>
                                                        <p>{{c.qty}} x <span> {{c.item_price}} </span></p>
                                                    </div>
                                                    <div class="cart_remove">
-                                                       <a (click)="DeleteProduct(c)"><i class="icon-x"></i></a>
+                                                       <a (click)="DeleteProduct(c)"><i class="fa fa-trash-o"></i></a>
                                                    </div>
                                                </div>
 

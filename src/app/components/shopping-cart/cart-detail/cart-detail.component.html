@@ -52,7 +52,7 @@
                                  <a (click)="DeleteProduct(c)"><i class="fa fa-trash-o"></i></a>
 
                               </td>
-                              <td class="product_thumb"><a href="#"><img src="{{c.item_primary_thumb}}" alt=""></a></td>
+                              <td class="product_thumb"><a [routerLink]="['/itemdetail',c.item_id]"><img src="{{c.item_primary_thumb}}" alt=""></a></td>
                               <td class="product_name">{{c.item_description}}</td>
                               <td class="product-price">{{c.item_price}}</td>
                               <td class="product_quantity">
