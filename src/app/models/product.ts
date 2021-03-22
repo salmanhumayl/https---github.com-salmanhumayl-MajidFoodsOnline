@@ -11,6 +11,7 @@ export class Product {
   item_secondary_thumb:string="";
   qty:number=1;
   ApplyTax:boolean;
+
   itemsimages: string[];
   itemspecification:string[];
 
