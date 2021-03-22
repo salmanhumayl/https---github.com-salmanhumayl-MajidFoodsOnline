@@ -11,7 +11,7 @@ import{MenuModel} from 'src/app/models/MenuModel';
 import{OrderConfirmation} from 'src/app/models/orderconfirmation';
 
 
-import {AreaChargesUrl, MenuUrl, OrderStatusUrl, AllProductUrl, ProductFilterbyCategoryUrl, ProductFilterUrl, ProductUrl} from 'src/app/config/api';
+import {AreaChargesUrl, MenuUrl, OrderStatusUrl, AllProductUrl, ProductFilterbyCategoryUrl, ProductFilterUrl} from 'src/app/config/api';
 
 import {OrderUrl} from 'src/app/config/api';
 import { Category } from '../models/category';

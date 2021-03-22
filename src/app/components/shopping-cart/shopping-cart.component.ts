@@ -37,7 +37,7 @@ export class ShoppingCartComponent implements AfterViewInit,OnInit,AfterContentI
               loop: true,
               nav: false,
               autoplay: true,
-              autoplayTimeout: 8000,
+              autoplayTimeout: 9000,
               items: 1,
               dots:true,
           });
