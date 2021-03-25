@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+
 import { Product } from 'src/app/models/product';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -16,10 +17,15 @@ export class ProductDetailComponent implements OnInit {
   id:number;
   qty:number=1;
   Currentqty:number=0;
+  showModal:boolean;
+  ProductTitle:string;
+  Productprice:number;
+  imgurl:string;
 
   constructor(private activeRoute:ActivatedRoute,
               private  _itemService:ProductService,
-              private msg:MessengerService) {
+              private msg:MessengerService,
+              ) {
 
                 this.activeRoute.params.subscribe(
                   (params:Params) =>{
@@ -146,8 +152,16 @@ export class ProductDetailComponent implements OnInit {
       this.msg.updateCartCount(this._itemService.CartCount());
       this.msg.sendMsg(this.productAddedTocart); //give refecne of localstorage
 
-      alert("Item Addedd....");
+      this.ProductTitle=product.item_description;
+      this.Productprice=product.item_price;
+      this.imgurl=product.item_primary_thumb;
+      this.showModal=true;
 
   }
 
+  hide(){
+    this.ProductTitle="";
+    this.Productprice=0;
+    this.showModal=false;
+  }
 }

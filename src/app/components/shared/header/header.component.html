@@ -306,10 +306,15 @@
                                       </li>
                                       <li class="mega_items"><a href="#" class="MenuBackground">PRODUCTS<i class="fa fa-angle-down"></i></a>
                                           <div class="mega_menu">
+
                                               <ul class="mega_menu_inner" *ngFor="let p of MenuModel">
-                                                  <li><a [routerLink]="['/filterproduct',p.catalog_id,'ALL']">{{p.catalog_description}}</a>
+                                                  <li><a [routerLink]="['/filterproduct',p.catalog_id,'ALL']">
+                                                    {{p.catalog_description}}</a>
+
                                                   </li>
+
                                               </ul>
+
                                           </div>
                                       </li>
                                       <li ><a routerLink='/specialoffers' class="MenuBackground">RAMADAN SPECIAL </a></li>
