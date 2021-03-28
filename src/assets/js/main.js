@@ -712,8 +712,9 @@
 
     /*---Category menu---*/
     function categorySubMenuToggle(){
-
-        $('.categories_menu_toggle li.menu_item_children > a').on('click', function(){
+        //alert('mirha');
+        $(document).on("click",".categories_menu_toggle li.menu_item_children > a",function(e){
+        //$('.categories_menu_toggle li.menu_item_children > a').on('click', function(){
         if($(window).width() < 991){
             $(this).removeAttr('href');
             var element = $(this).parent('li');
@@ -829,11 +830,14 @@
 
 
     /*---canvas menu activation---*/
-    $('.canvas_open,.off_canvars_overlay').on('click', function(){
+   // alert("saaim");
+    $(document).on("click",".canvas_open,.off_canvars_overlay",function(e){
+    //$('.canvas_open,.off_canvars_overlay').on('click', function(){
         $('.offcanvas_menu_wrapper,.off_canvars_overlay').addClass('active')
     });
 
-    $('.canvas_close,.off_canvars_overlay').on('click', function(){
+    $(document).on("click",".canvas_close,.off_canvars_overlay",function(e){
+    //$('.canvas_close,.off_canvars_overlay').on('click', function(){
         $('.offcanvas_menu_wrapper,.off_canvars_overlay').removeClass('active')
     });
 

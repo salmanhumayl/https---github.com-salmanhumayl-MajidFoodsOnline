@@ -5,40 +5,41 @@
 <div class="row">
 
              <div class="col-12">
-                      <div class="tab-pane fade show active" id="plant1" role="tabpanel">
 
                         <div class="row">
-                          <hr>
-                        <div class="col-3" *ngFor="let productitem of productitem">
-                                  <div class="product_items" >
-                                  <article class="single_product">
-                                      <figure>
-                                          <div class="product_thumb">
-                                              <a class="primary_img" [routerLink]="['/itemdetail',productitem.item_id]"><img [src]="productitem.item_primary_thumb" style="width: 100%;height:100%"></a>
+
+                        <div class="col-4" *ngFor="let productitem of productitem">
+                                      <div class="card my-2">
+                                              <a class="primary_img" [routerLink]="['/itemdetail',productitem.item_id]">
+                                                <img [src]="productitem.item_primary_thumb" width="100px" class="card-img-top" ></a>
+
+                                          <div class="card-header">
+                                            <div class="card-title">
+                                              <a [routerLink]="['/itemdetail',productitem.item_id]">{{productitem.item_description}} </a>
+                                            </div>
                                           </div>
-                                          <figcaption class="product_content">
-                                              <h4 class="product_name"><a [routerLink]="['/itemdetail',productitem.item_id]">{{productitem.item_description}} </a></h4>
-                                              <div class="price_box">
-                                                   <span class="current_price" *ngIf="productitem.item_size==''">{{productitem.item_price | currency:'$'}} </span>
-                                                   <span class="current_price" *ngIf="productitem.item_size!=''">{{productitem.item_price | currency:'$'}}  / {{productitem.item_size}} {{productitem.item_uom}}</span>
-                                              </div>
-                                          </figcaption>
-                                          <div style="text-align: center;" >
-                                            <button class="btn btn-outline-success btn-sm btn-block" (click)="addProductToCart(productitem)">Add To Cart</button>
+                                          <div class="card-body price_box">
+                                             <span class="current_price" *ngIf="productitem.item_size==''">{{productitem.item_price | currency:'$'}} </span>
+                                             <span class="current_price" *ngIf="productitem.item_size!=''">{{productitem.item_price | currency:'$'}}  / {{productitem.item_size}} {{productitem.item_uom}}</span>
+                                         </div>
+
+                                         <div class="row d-flex justify-content-center border-primary my-3">
+                                          <div class="col-md-6 ">
+                                            <button class="btn btn-outline-success btn-sm btn-block pull-left"
+                                             (click)="addProductToCart(productitem)">Add To Cart
+
+                                            </button>
                                             <img  *ngIf="isViewLoading" src="assets/img/ng-loader.gif" width="25px" height="25px"/>
                                           </div>
-                                      </figure>
-                                  </article>
-                                </div>
-
+                                        </div>
                         </div>
 
                       </div>
 
 
                   </div>
-              </div>
+
           </div>
       </div>
-
+</div>
 
