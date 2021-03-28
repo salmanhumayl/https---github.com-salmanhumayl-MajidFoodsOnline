@@ -37,7 +37,7 @@ const routes: Routes = [
   {path:'aboutus',component:AboutusComponent},
   {path:'contactus',component:ContactusComponent},
   {path:'terms',component:TermconditionsComponent},
-  {path:'specialoffers',component:SpecialoffersComponent},
+  {path:'specialoffers/:dealid/:showonmenu',component:SpecialoffersComponent},
   {path:'policy',component:PolicyComponent},
   {path:'',redirectTo:'/home',pathMatch:'full'}
 

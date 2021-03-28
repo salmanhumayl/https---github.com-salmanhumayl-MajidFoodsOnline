@@ -1,7 +1,9 @@
 
     <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area" style="background: url('assets/img/bg/RamdanSpecial.jpg') no-repeat 0 0; background-size: cover;
-    height: 200px">
+<ng-template [ngIf]="showonmenu==1" >
+    <div class="breadcrumbs_area"
+     style="background: url('assets/img/bg/RamdanSpecial.jpg') no-repeat 0 0; background-size: cover;
+      height: 200px">
       <div class="container">
           <div class="row">
               <div class="col-12">
@@ -16,6 +18,27 @@
           </div>
       </div>
   </div>
+</ng-template>
+
+<ng-template [ngIf]="showonmenu==0" >
+  <div class="breadcrumbs_area"
+    >
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <div class="breadcrumb_content">
+                     <!-- <h3  style="text-align: left;">Special Offers</h3> -->
+                      <!-- <ul>
+                          <li><a href="index.html">home</a></li>
+                          <li>Special Offers</li>
+                      </ul> -->
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</ng-template>
+
   <!--breadcrumbs area end-->
   <div class="product_area  mb-64">
     <div class="container">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -10,10 +11,25 @@ import { ProductService } from 'src/app/services/product.service';
 export class SpecialoffersComponent implements OnInit {
 
   dealproductitems:Product[]=[]; //blank array to start with
-  constructor(private _itemService:ProductService) { }
+  dealid:number;
+  showonmenu:number
+  constructor(private _itemService:ProductService,
+              private activeRoute:ActivatedRoute) {
+
+                this.activeRoute.params.subscribe(
+                  (params:Params) =>{
+                      this.dealid=params.dealid;
+                      this.showonmenu=params.showonmenu;
+
+                      this.ShowDeals(this.dealid);
+                  }
+
+              );
+
+               }
 
   ngOnInit(): void {
-    this.ShowDeals(2);
+
   }
 
   ShowDeals(dealid:number)
