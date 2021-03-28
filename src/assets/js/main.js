@@ -716,7 +716,7 @@
         $(document).on("click",".categories_menu_toggle li.menu_item_children > a",function(e){
         //$('.categories_menu_toggle li.menu_item_children > a').on('click', function(){
         if($(window).width() < 991){
-            $(this).removeAttr('href');
+           $(this).removeAttr('href');
             var element = $(this).parent('li');
             if (element.hasClass('open')) {
                 element.removeClass('open');
@@ -733,6 +733,7 @@
             }
         }
         });
+
         $('.categories_menu_toggle li.menu_item_children > a').append('<span class="expand"></span>');
     }
     categorySubMenuToggle();
