@@ -50,9 +50,14 @@
 
                         </div>
                         <div class="product_desc">
-                            <p>
-                              <img src="assets/img/fresh.jpg"/>
-                            </p>
+                          <p >
+                            <img src="assets/img/Halal.jpg" *ngIf="inItems.halal"/>
+                            &nbsp;&nbsp;
+                            <img src="assets/img/fresh.jpeg" *ngIf="inItems.fresh"/>
+                          </p>
+
+
+
                         </div>
                         <div class="table table-hover">
                           <div>

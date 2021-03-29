@@ -134,6 +134,8 @@ export class ProductDetailComponent implements OnInit {
           item_size:product.item_size,
           item_uom:product.item_uom,
           ApplyTax:product.ApplyTax,
+          halal:product.halal,
+          fresh:product.fresh,
           itemsimages:['assets/img/product01.png','assets/img/product01.png'],
           itemspecification:product.itemspecification
 
