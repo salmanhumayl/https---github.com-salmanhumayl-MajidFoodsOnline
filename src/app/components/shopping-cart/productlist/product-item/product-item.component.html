@@ -9,9 +9,11 @@
                         <div class="row">
 
                         <div class="col-4" *ngFor="let productitem of productitem">
-                                      <div class="card my-2">
-                                              <a class="primary_img" [routerLink]="['/itemdetail',productitem.item_id]">
-                                                <img [src]="productitem.item_primary_thumb" width="100px" class="card-img-top" ></a>
+                                      <div class="card my-2" style="text-align:center;">
+
+                                        <a class="primary_img" [routerLink]="['/itemdetail',productitem.item_id]">
+                                                <img  [src]="productitem.item_primary_thumb" style="width:250px;height:250px;" class="card-img-top" >
+                                        </a>
 
                                           <div class="card-header">
                                             <div class="card-title">
