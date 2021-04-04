@@ -47,7 +47,7 @@ export class FilterproductlistComponent implements OnInit {
 
             this.productitems=data;
             this.RefreshMenu();
-         //  console.log(this.productitems);
+            console.log(this.productitems);
         },
         error => {
                   alert(error);
@@ -65,7 +65,7 @@ export class FilterproductlistComponent implements OnInit {
 
             this.productitems=data;
             this.RefreshMenu();
-            console.log(this.productitems);
+           // console.log(this.productitems);
         },
         error => {
                   alert(error);

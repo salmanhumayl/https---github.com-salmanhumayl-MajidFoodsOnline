@@ -197,9 +197,12 @@ GetTaxItemAmount()
   let TaxAmount:number=0;
   for (let i in this.productAddedTocart)
       {
-        if (this.productAddedTocart[i].ApplyTax===true)
+
+        if (this.productAddedTocart[i].ApplyTax===true && this.productAddedTocart[i].TaxAmountPercentage > 0 )
         {
-           TaxAmount=+TaxAmount + this.productAddedTocart[i].qty * this.productAddedTocart[i].item_price;
+
+          TaxAmount=+TaxAmount+ (this.productAddedTocart[i].qty * this.productAddedTocart[i].item_price) * this.productAddedTocart[i].TaxAmountPercentage /100;
+          //TaxAmount=+TaxAmount + this.productAddedTocart[i].qty * this.productAddedTocart[i].item_price;
 
         }
       }
@@ -209,7 +212,8 @@ GetTaxItemAmount()
 
 CalculateTax(Rate:number){
 //mTaxAmount=+(this.TaxableAmount+ + area.Rate) * 13 / 100;
- return (this.TaxableAmount + Rate) * 13 / 100;
+ //return (this.TaxableAmount + Rate) * 13 / 100;
+ return (this.TaxableAmount);
 }
 
 RedirectHome(){
