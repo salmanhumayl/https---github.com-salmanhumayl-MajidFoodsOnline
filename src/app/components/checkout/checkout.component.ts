@@ -52,6 +52,7 @@ export class CheckoutComponent implements OnInit {
               private router:Router) { }
 
   ngOnInit(): void {
+
     this.GetShippingCharges();
     this.GetLoggedinUserDetails();
 
@@ -59,6 +60,7 @@ export class CheckoutComponent implements OnInit {
     this.orderDetail.CustomerLastName=this.currentUser.LastName;
 
     this.productAddedTocart=this._itemService.getProductFromCart();
+    this.TaxableAmount=this.GetTaxItemAmount();
 
     if (this.productAddedTocart!=null)
     {
@@ -156,8 +158,8 @@ GetLoggedinUserDetails()
 }
 
 onChange(value:number){
-  this.TaxableAmount=0;
-  this.TaxableAmount=this.GetTaxItemAmount();
+  //this.TaxableAmount=0;
+ // this.TaxableAmount=this.GetTaxItemAmount();
   let mTaxAmount:number=0;
   this.TaxAmount=0;
 
@@ -175,11 +177,11 @@ onChange(value:number){
         {
           mTaxAmount=this.CalculateTax(area.Rate);
           this.TaxAmount=+mTaxAmount.toFixed(2);
-          this.GrandTotal=+Total + area.Rate + this.TaxAmount;
+          this.GrandTotal=+Total + area.Rate + this.TaxAmount + this.TaxableAmount;
         }
         else
         {
-          this.GrandTotal=+Total + area.Rate;
+          this.GrandTotal=+Total + area.Rate + this.TaxableAmount;
         }
 
      }
@@ -212,8 +214,8 @@ GetTaxItemAmount()
 
 CalculateTax(Rate:number){
 //mTaxAmount=+(this.TaxableAmount+ + area.Rate) * 13 / 100;
- //return (this.TaxableAmount + Rate) * 13 / 100;
- return (this.TaxableAmount);
+ return (Rate) * 13 / 100;
+
 }
 
 RedirectHome(){

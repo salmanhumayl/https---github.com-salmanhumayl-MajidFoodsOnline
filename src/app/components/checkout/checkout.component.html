@@ -145,6 +145,7 @@
                                <thead>
                                    <tr>
                                        <th>Product</th>
+
                                        <th>Total</th>
                                    </tr>
                                </thead>
@@ -152,6 +153,7 @@
                                    <tr>
                                        <td> {{prod.item_description}}<strong> × {{prod.qty}}</strong></td>
                                        <td> {{ prod.qty * prod.item_price | currency:'CAD'}}</td>
+
                                    </tr>
                                </tbody>
                                <tfoot>
@@ -164,7 +166,11 @@
                                        <td><strong>{{orderDetail.ShipingCharges | currency:'CAD'}}</strong></td>
                                    </tr>
                                    <tr>
-                                    <th>HST 13%</th>
+                                    <th>HST %</th>
+                                    <td><strong>{{TaxableAmount | currency:'CAD'}}</strong></td>
+                                </tr>
+                                   <tr>
+                                    <th>HST 13 %</th>
                                     <td><span style="color: red;font-weight: bold;">{{TaxAmount | currency:'CAD'}}</span></td>
                                 </tr>
                                    <tr class="order_total">

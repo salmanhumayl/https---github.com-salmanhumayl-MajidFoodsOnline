@@ -13,6 +13,7 @@ export class OrderDetail
      AreaID :number
      PostalCode:string;
      ShipingCharges :number=0;
+     HST:number=0;
      ContactNumber:string;
      OrderPayMethod :string;
      PaymentRefrenceId :string;
