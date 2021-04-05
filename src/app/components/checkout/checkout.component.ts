@@ -31,7 +31,7 @@ export class CheckoutComponent implements OnInit {
   mTotal:number;
   showModal: boolean;
   TaxableAmount:number=0;
-  TaxAmount:number=0;
+  ShippingTaxAmount:number=0;
 
   /* @ViewChild('form') form: ElementRef;
   @ViewChild('AJESMerchantID') MerchantID : ElementRef;
@@ -52,7 +52,6 @@ export class CheckoutComponent implements OnInit {
               private router:Router) { }
 
   ngOnInit(): void {
-
     this.GetShippingCharges();
     this.GetLoggedinUserDetails();
 
@@ -126,7 +125,7 @@ ConfirmOrder(){
 
   }
   this.orderDetail.Total=this.Total;
-  this.orderDetail.TaxAmount=this.TaxAmount;
+  this.orderDetail.TaxAmount=this.ShippingTaxAmount;
      this.orderDetail.OrderItems=this.orderItem;
      this._itemService.PlaceOrder(this.orderDetail).subscribe(
         (data:OrderConfirmation)=>{
@@ -158,10 +157,9 @@ GetLoggedinUserDetails()
 }
 
 onChange(value:number){
-  //this.TaxableAmount=0;
- // this.TaxableAmount=this.GetTaxItemAmount();
-  let mTaxAmount:number=0;
-  this.TaxAmount=0;
+
+  let mShippingTaxAmount:number=0;
+  this.ShippingTaxAmount=0;
 
   this.orderDetail.ShipingCharges=0;
   let area =this.ShippingCharges.find(p=>p.AreaID==value)
@@ -172,24 +170,22 @@ onChange(value:number){
           this.msg.updateShippingCharges(area.Rate); //there was no need of shared service calling , jst made it....
           this.msg.getShippingCharges().subscribe((ShippingCharges:number)=>{
           this.orderDetail.ShipingCharges = ShippingCharges;
-       })
-        if ( this.TaxableAmount > 0 )
-        {
-          mTaxAmount=this.CalculateTax(area.Rate);
-          this.TaxAmount=+mTaxAmount.toFixed(2);
-          this.GrandTotal=+Total + area.Rate + this.TaxAmount + this.TaxableAmount;
-        }
-        else
-        {
-          this.GrandTotal=+Total + area.Rate + this.TaxableAmount;
-        }
 
+       })
+        if ( area.Rate > 0 )
+        {
+
+          mShippingTaxAmount=this.CalculateShippingTax(area.Rate);
+          this.ShippingTaxAmount=+mShippingTaxAmount.toFixed(2);
+          this.GrandTotal=+Total + area.Rate + this.ShippingTaxAmount + this.TaxableAmount;
+          this.orderDetail.ItemTaxableAmount=this.TaxableAmount;
+        }
      }
      else
           {
-            mTaxAmount=this.CalculateTax(0);
-            this.TaxAmount=+mTaxAmount.toFixed(2);
-            this.GrandTotal=+Total +this.TaxAmount ;
+
+            this.GrandTotal=+Total + this.TaxableAmount ;
+            this.orderDetail.ItemTaxableAmount=this.TaxableAmount;
          }
 
 }
@@ -212,7 +208,7 @@ GetTaxItemAmount()
       return TaxAmount;
 }
 
-CalculateTax(Rate:number){
+CalculateShippingTax(Rate:number){
 //mTaxAmount=+(this.TaxableAmount+ + area.Rate) * 13 / 100;
  return (Rate) * 13 / 100;
 
