@@ -7,6 +7,7 @@ export class UserInfo
   Token:string;
   Message:string;
   lStatus:boolean;
+  WaviedShippingCharges:boolean;
 
 
 }

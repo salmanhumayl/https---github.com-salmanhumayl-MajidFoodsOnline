@@ -53,7 +53,7 @@ export class InvoiceComponent implements OnInit {
        })
      },
      complete:()=>{
-         this.GrandTotal= this.Total +  + this.orderdetails[0].ShipingCharges + this.orderdetails[0].TaxAmount;
+         this.GrandTotal= this.Total +  + this.orderdetails[0].ShipingCharges + this.orderdetails[0].ItemTaxableAmount + this.orderdetails[0].TaxAmount;
 
      }
    }

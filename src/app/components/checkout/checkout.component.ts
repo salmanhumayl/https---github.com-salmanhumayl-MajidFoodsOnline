@@ -69,14 +69,14 @@ export class CheckoutComponent implements OnInit {
         this.CalculateTotal(this.productAddedTocart);
         if ( this.orderDetail.ShipingCharges==0 )
         {
-            this.GrandTotal=this.Total;
+            this.GrandTotal=this.Total + this.TaxableAmount;
         }
       }
     }
       this.msg.getMsg().subscribe((product:Product[])=>{
       this.productAddedTocart=product;
       this.CalculateTotal(this.productAddedTocart)
-      this.GrandTotal=this.Total;
+      this.GrandTotal=this.Total + this.TaxableAmount;
 
     })
 
@@ -161,6 +161,11 @@ onChange(value:number){
   let mShippingTaxAmount:number=0;
   this.ShippingTaxAmount=0;
 
+  if (this.currentUser.WaviedShippingCharges==true)
+  {
+    this.orderDetail.ItemTaxableAmount=this.TaxableAmount;
+    return;
+  }
   this.orderDetail.ShipingCharges=0;
   let area =this.ShippingCharges.find(p=>p.AreaID==value)
   let Total=this._itemService.CalculateTotal(this.productAddedTocart);
