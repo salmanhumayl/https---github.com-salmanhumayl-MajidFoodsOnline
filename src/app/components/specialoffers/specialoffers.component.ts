@@ -39,7 +39,7 @@ export class SpecialoffersComponent implements OnInit {
 
         (data)=>{
           this.dealproductitems=data;
-
+            console.log(this.dealproductitems);
 
       },
       error => {

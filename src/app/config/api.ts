@@ -11,7 +11,7 @@ export const AllProductUrl=baseUrl+ '/item';
 
 
 export const OrderUrl=baseUrl+ '/order';
-export const RegisterUrl=baseUrl+ '/Customer';
+export const RegisterUrl=baseUrl+ '/Customer/Register/';
 export const LoginUrl=baseUrl+ '/Login';
 export const ForgetUrl=baseUrl+ '//ForgotPassword/Forgot';
 

@@ -3,4 +3,5 @@ export class Customer {
   LastName:string;
   Email: string;
   Password:string;
+
 }

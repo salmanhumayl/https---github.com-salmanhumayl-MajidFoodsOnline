@@ -87,6 +87,7 @@ export class LoginComponent implements OnInit {
     }
 
    UserRegistration(form:NgForm){
+
       this.btnregister.nativeElement.disabled=true;
       this.buttonText="Please wait...."
       this.UserAlreadyExist=false;
