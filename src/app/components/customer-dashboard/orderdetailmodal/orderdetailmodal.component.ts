@@ -29,7 +29,7 @@ export class OrderdetailmodalComponent implements OnInit {
      {
        next:(data)=>{
          this.orderdetails=data;
-          console.log(this.orderdetails);
+        //  console.log(this.orderdetails);
          data[0].OrderItems.forEach(cs=>{
 
            let qtyprice= cs.OrderedQuantity * cs.PerUnitPrice;

@@ -89,7 +89,7 @@ export class ProductDetailComponent implements OnInit {
 
         (data)=>{
           this.inItems=data;
-          console.log(this.inItems);
+        //  console.log(this.inItems);
 
       },
       error => {
