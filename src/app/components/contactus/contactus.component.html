@@ -43,25 +43,57 @@
               <div class="col-lg-6 col-md-6">
                  <div class="contact_message form">
                       <h3>Tell us your project</h3>
-                      <form id="contact-form" method="POST"  action="assets/mail.php">
+                      <form  #contactusform="ngForm" (ngSubmit)="contactus(contactusform)" >
                           <p>
                              <label> Your Name (required)</label>
-                              <input name="name" placeholder="Name *" type="text">
+                             <input type="text"
+                             id="model.Name"
+                             name="model.Name"
+                             [(ngModel)]="model.Name"
+                             placeholder="Name *"
+                             required
+                             >
                           </p>
                           <p>
                              <label>  Your Email (required)</label>
-                              <input name="email" placeholder="Email *" type="email">
+                             <input type="text"
+                             id="model.Email"
+                             name="model.Email"
+                             [(ngModel)]="model.Email"
+                             email
+                             placeholder="Email *"
+                             required
+                             >
                           </p>
                           <p>
                              <label>  Subject</label>
-                              <input name="subject" placeholder="Subject *" type="text">
+                             <input type="text"
+                             id="model.Subject"
+                             name="model.Subject"
+                             [(ngModel)]="model.Subject"
+
+                             placeholder="Subject *"
+                             required
+                             >
                           </p>
                           <div class="contact_textarea">
                               <label>  Your Message</label>
-                              <textarea placeholder="Message *" name="message"  class="form-control2" ></textarea>
+                              <textarea
+                                id="model.Message"
+                                name="model.Message"
+                                [(ngModel)]="model.Message"
+
+                                placeholder="Message *"
+                                rows="4"
+                                required
+                             >
+                             </textarea>
                           </div>
-                          <button type="submit"> Send</button>
-                          <p class="form-messege"></p>
+                          <button type="submit" [disabled]="contactusform.invalid">{{ButtonText}}</button>
+                          <div *ngIf="message">
+                            <div [innerHTML]="message" class="form-messege" ></div>
+
+                        </div>
                       </form>
 
                   </div>

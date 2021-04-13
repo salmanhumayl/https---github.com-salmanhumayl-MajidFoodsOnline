@@ -15,6 +15,8 @@ export const RegisterUrl=baseUrl+ '/Customer/Register/';
 export const LoginUrl=baseUrl+ '/Login';
 export const ForgetUrl=baseUrl+ '//ForgotPassword/Forgot';
 
+export const ContactusUrl=baseUrl+ '/contactus';
+
 export const AreaChargesUrl=baseUrl+ '/delivery';
 export const OrderStatusUrl=baseUrl+ '/OrderStatus';
 

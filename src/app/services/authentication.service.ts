@@ -4,11 +4,12 @@ import { Observable, throwError } from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 
-import { ForgetUrl, LoginUrl, RegisterUrl } from '../config/api';
+import { ContactusUrl, ForgetUrl, LoginUrl, RegisterUrl } from '../config/api';
 
 import {Customer} from 'src/app/models/customer';
 import { Login } from '../models/Login';
 import { UserInfo } from '../models/UserInfo';
+import { ContactUs } from '../models/contactus';
 
 @Injectable({
   providedIn: 'root'
@@ -104,4 +105,17 @@ export class AuthenticationService {
   )
 
   }
+
+  contactus(model:ContactUs):Observable<boolean> {
+    return this._http.post<boolean>(ContactusUrl,model)
+    .pipe(
+      map(result=>{
+
+        return result;
+      }),
+
+      catchError(this.handleError)
+  )
+}
+
 }
