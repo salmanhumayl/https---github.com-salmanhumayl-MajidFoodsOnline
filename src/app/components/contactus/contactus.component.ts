@@ -22,7 +22,9 @@ export class ContactusComponent implements OnInit {
   contactus(form:NgForm){
     this.ButtonText="Please wait...."
     this.authService.contactus(this.model).subscribe(
+
       (response:boolean)=>{
+
       if (response==true )
         {
           this.ButtonText="Send";
