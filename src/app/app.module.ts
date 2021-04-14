@@ -47,6 +47,7 @@ import { OrderdetailmodalComponent } from './components/customer-dashboard/order
 import {NgxPrintModule} from 'ngx-print';
 
 import {ModalModule} from 'ngx-bootstrap/modal';
+import { DeclineComponent } from './components/decline/decline.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import {ModalModule} from 'ngx-bootstrap/modal';
     DeliveryinfoComponent,
     TermconditionsComponent,
     PolicyComponent,
-    OrderdetailmodalComponent
+    OrderdetailmodalComponent,
+    DeclineComponent
   ],
   imports: [
     BrowserModule,

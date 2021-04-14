@@ -20,6 +20,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { SpecialoffersComponent } from './components/specialoffers/specialoffers.component';
 import { TermconditionsComponent } from './components/termconditions/termconditions.component';
 import { PolicyComponent } from './components/policy/policy.component';
+import { DeclineComponent } from './components/decline/decline.component';
 
 const routes: Routes = [
   {path:'home',component:ShoppingCartComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path:'checkout',component:CheckoutComponent,canActivate:[AuthGuardService]},
   {path:'MyAccount',component:CustomerDashboardComponent,canActivate:[AuthGuardService]},
   {path:'myorders',component:MyordersComponent,canActivate:[AuthGuardService]},
-  {path:'confirmation',component:ConfirmationComponent},
+  {path:'confirmation',component:ConfirmationComponent,canActivate:[AuthGuardService]},
+  {path:'decline',component:DeclineComponent},
   {path:'login',component:LoginComponent},
   {path:'logout',component:LogoutComponent},
   {path:'aboutus',component:AboutusComponent},
