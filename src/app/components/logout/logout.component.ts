@@ -23,7 +23,7 @@ export class LogoutComponent implements OnInit {
     this.msg.isLoggedIn$.next(false);
     this.msg.isWelComeName$.next('');
     this.msg.updateCartCount(0);
-    window.location.href="http://www.mirajfoods.ca/home";
+    window.location.href="https://www.mirajfoods.ca/home";
 
 
   }

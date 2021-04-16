@@ -170,7 +170,7 @@ export class ProductService {
     }
 
     GetDeal(dealid:number):Observable<Product[]>{
-      return this._http.get<Product[]>("http://eservices.mirajfoods.ca/api/deal?iid=" + dealid)
+      return this._http.get<Product[]>("https://eservices.mirajfoods.ca/api/deal?iid=" + dealid)
       .pipe(
         catchError(this.handleError)
     );

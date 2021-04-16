@@ -20,7 +20,6 @@ export class ConfirmationComponent implements OnInit {
               private router:Router,
               private _itemService:ProductService) {
 
-
       this.route.queryParams.subscribe(params => {
       this.OrderStatus.trnId= params['trnId'];
       this.OrderStatus.trnOrderNumber= params['trnOrderNumber'];
