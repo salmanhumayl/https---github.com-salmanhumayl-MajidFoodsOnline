@@ -207,7 +207,7 @@ export class ProductService {
        MyOrders(ID:number):Observable<OrderDetail[]>{
 
 
-          return this._http.get<OrderDetail[]>("http://eservices.mirajfoods.ca/api/orderbycustomer?IiD=" + ID)
+          return this._http.get<OrderDetail[]>("https://eservices.mirajfoods.ca/api/orderbycustomer?IiD=" + ID)
           .pipe(
             catchError(this.handleError)
         );
@@ -293,7 +293,7 @@ export class ProductService {
   getOrderDetail(orderno:string):Observable<OrderDetail>
   {
 
-     return this._http.get<OrderDetail>("http://eservices.mirajfoods.ca/api/orderbynumber?OrderNumber=" + orderno)
+     return this._http.get<OrderDetail>("https://eservices.mirajfoods.ca/api/orderbynumber?OrderNumber=" + orderno)
     .pipe(
       catchError(this.handleError)
   );
